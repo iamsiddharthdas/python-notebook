@@ -1,7 +1,6 @@
 This repo is just my personal learning log of code snippets that helped me understand Python in depth, 
 from the basics to more advanced topics. 
 
-**If you find this helpful, consider dropping a ⭐️ to support the project!**
 
 -> [Access this Python directory for algorithms and more](https://github.com/TheAlgorithms/Python/blob/uv-again/DIRECTORY.md).
 
