@@ -35,6 +35,7 @@ x = 10
 y = 20.5
 z = x + y # x is implicitly converted to float
 print(z) # prints 30.5
+
 # Example of explicit typecasting
 x = 10
 y = 20.5
@@ -43,23 +44,44 @@ print(z) # prints 20
 
 '''
 
-'''
+# Explicit typecasting (more examples)
 
-x=100
-
+x = 100
+x = float(x)
 print(type(x),x)
+# prints <class 'float'> 100.0 
 
-x=float(x)
-
-print(type(x),x)
-
-prints <class 'float'> 100.0               
-
-x=Lokesh
+x='Lokesh'
 x=int(x)
-
 print(x)
+# We get an error because we cannot convert a string to an integer
 
-We get an error because we cannot convert a string to an integer
+y='1000'
+y=int(y)
+print(y)
+# it prints 1000 because if the string has integer, python is smart enough to detect that.
+# it will print 1000.0 if we write y=float(y)
 
-'''
+z='1000L'
+z=int(z)
+print(z)
+# We get an error because addition of the alphabet 'L' makes it a string. Hence, can't be converted to integer.
+# Note: String will either read it as Integer or Float or string literal itself. Cant be mixed.
+
+value = input('Whats the value? ')
+print(type(value))
+# input can be float, int or even boolean
+# But whatever value you input, the output will be <class 'str'>
+
+# So, to fix that, we need this
+value1 = int(input('Whats the value? ')) 
+print(type(value1))# prints <class 'int'>
+
+value2 = float(input('Whats the value? '))
+print(type(value2))# prints <class 'float'>
+
+value3 = str(input('Whats the value? '))
+print(type(value3))# prints <class 'str'>
+
+value4 = bool(input('Whats the value? '))
+print(type(value4))# prints <class 'bool'>

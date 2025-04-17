@@ -27,7 +27,7 @@ print("Value of Y is ",y)
 
     i = 3 → x = 130 + 3 = 133 → y = 65 - 3 = 62 → i = 2
 
-Now i = 2, which is less than 3 → Exit the loop
+Now i = 2, which is less than 3 → Exit the loop and print
 
 Final Output:
     x = 133
