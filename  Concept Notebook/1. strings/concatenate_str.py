@@ -1,5 +1,5 @@
 greeting = 'Hello'
-name= 'Michael'
+name = 'Michael'
 
 '''
 message = greeting + ', ' + name
@@ -7,9 +7,14 @@ print (message) #prints Hello, Michael
 
 '''
 
-msg1= '{}, {}. Welcome!'.format(greeting. name) # string formatting - placeholders {}
+msg1= '{}, {}. Welcome!'.format(greeting,name) # string formatting - placeholders {}
 msg2= f'{greeting}, {name}. Welcome!' # f-strings - works in Python 3.6 or higher 
-msg3= f'{greeting}, {name.upper}. Welcome!' # f-strings - (can add attributes and methods like 'upper' on string variables)
+msg3= f'{greeting}, {name.upper()}. Welcome!' # f-strings - (can add attributes and methods like 'upper' on string variables)
+
+print(msg1)
+print(msg2)
+print(msg3)
+
 
 
 '''
