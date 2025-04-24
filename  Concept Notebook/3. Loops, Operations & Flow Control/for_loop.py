@@ -40,3 +40,91 @@ for i in range(0,5,1):
 # prints 0, 1, 2, 3, 4
 
 
+'''
+Using break, continue and exit() in for loop
+1. Break: Used to exit the loop
+2. Continue: Used to skip the current iteration and continue with the next iteration
+3. Exit: Used to exit the program
+
+'''
+
+# break()
+# Example: 
+for i in range(0,5,1):
+    if i == 3:
+        break
+    print(i)
+print('Hello World')
+
+'''
+Output: 
+0
+1
+2
+Hello World
+
+̉'''
+
+for i in range(0,5,1):
+    break
+    print(i)
+print('Hello World')
+
+'''
+Output:
+Hello World
+'''
+
+# exit()
+# Example:
+
+for i in range(0,5,1):
+    if i == 3:
+        exit()
+    print(i)
+    
+print('Hello World')
+
+'''
+Output:
+0
+1
+2
+
+'''
+
+# continue()
+# Example:
+for i in range(0,5,1):
+    if i == 3:
+        continue
+    print(i)
+'''
+Output:
+0
+1
+2
+4
+
+'''
+
+for i in range(0,10,1):
+    if i == 4 or i == 8:
+        continue
+    print(i)
+print('Hello World')
+
+'''
+Output:
+0
+1
+2
+3
+5
+6
+7
+9
+Hello World
+
+'''
+
