@@ -385,6 +385,7 @@ for i in range(4,-1,-1): # It is 4 instead of 5 because the last row is already 
             print(' ', end= ' ')
     print(end='\n')
 
+
 '''
 Output:
 
@@ -425,13 +426,29 @@ Output:
  2 3 4 5
   3 4 5
    4 5
-    5
+    5 
 '''
+# Palindrome Triangle Pattern
+for i in range(5):
+    print("  "*(5-i-1),end=" ") # Two spaces to avoid equilateral triangle formation
+    for j in range(i+1,0,-1): 
+        print(j, end=" ")
+# This loop prints the first half of the palindrome
 
+    for k in range(2,i+2):  
+        # It starts from 2 because the first number is already printed in the first half
+        # Why i+2 and not i+1? The last num in 1st half is i+1, so we need to print from i+2 for the 2nd half
+        # This loop prints the second half of the palindrome
+        print()
+'''
+Output:
+         1 
+       2 1 2 
+     3 2 1 2 3 
+   4 3 2 1 2 3 4 
+ 5 4 3 2 1 2 3 4 5 
 
-
-
-
+'''
 
 
 
