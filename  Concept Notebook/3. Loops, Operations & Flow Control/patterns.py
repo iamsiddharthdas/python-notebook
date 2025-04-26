@@ -17,6 +17,23 @@ i is the row number
 j is the column number
 
 '''
+# Number Changing Pyramid Pattern (right-angled triangle)
+
+count=0
+for i in range(5):
+    for j in range(i+1):
+        count +=1
+        print(count, end =' ')
+    print(end='\n')
+'''
+Output:
+1               i=0, j=0
+2  3            i=1, j=0,1
+4  5  6         i=2, j=0,1,2
+7  8  9  10     i=3, j=0,1,2,3
+11 12 13 14 15  i=4, j=0,1,2,3,4
+        
+'''                
 # Square Pattern (using '*')
 
 for i in range (1,5):
