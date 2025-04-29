@@ -450,19 +450,61 @@ Output:
 
 '''
 
+# Hollow Hourglass Pattern
+for i in range(5):
+    print(' '*(i),end=' ')
+    for j in range(5,i,-1):
+        if i==0 or j==5 or j==i+1 :
+            print('*',end=' ')
+        else:
+            print(' ',end=' ')
+    print(end='\n')
+    
+for i in range(1,5):
+    print(' '*(5-i-1),end=' ')
+    for j in range(i+1):
+        if i==4 or j==0 or j==i :
+            print('*',end=' ')
+        else:
+            print(' ',end=' ')
+    print(end='\n')
+    
+'''
+Output:
+
+ * * * * * 
+  *     * 
+   *   * 
+    * * 
+     * 
+    * * 
+   *   * 
+  *     * 
+ * * * * * 
+
+'''
+
+# Pascal Triangle Pattern
+
+for i in range(5):
+    print(' '*(5-i-1), end=' ' )
+    temp=1
+    for j in range(i+1):
+        print(temp, end=' ')
+        temp= temp*(i-j)//(j+1) #Pascal triangle formula
+    print(end='\n')
+
+'''
+Output:
+
+     1 
+    1 1 
+   1 2 1 
+  1 3 3 1 
+ 1 4 6 4 1 
 
 
-
-
-
-
-
-
-
-
-
-
-
+'''
 
 # Butterfly Pattern
 
@@ -497,9 +539,29 @@ Output:
 *                 * 
 
 
-i is the row number
-j is the column number
-k is the column number for the second half of the pattern
+'''
 
+# Zero-one triangle
+
+for i in range(5):
+    if i%2==0:
+        temp=1
+    else:
+        temp=0
+    for j in range(i+1):
+        print(temp,end=' ')
+        temp=temp+1
+        if temp==2:
+            temp=0
+    print(end='\n')
+    
+'''
+Output:
+
+1 
+0 1 
+1 0 1 
+0 1 0 1 
+1 0 1 0 1
 
 '''
