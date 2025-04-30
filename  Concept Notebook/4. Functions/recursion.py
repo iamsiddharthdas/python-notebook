@@ -29,9 +29,9 @@ Blast off!
 '''
 
 
+#### 1. Linear Recursion ####
 
 
-# Example:
 # Print the multiplication table of a number using basic recursion
 
 
@@ -113,32 +113,6 @@ For n = 7
 
 '''
 
-# Fibonacci series using recursion
-
-def fib(n):
-    if n <= 1: # Base case
-        return n
-    return fib(n-1) + fib(n-2) # Recursive case
-
-'''
-+------------------+-----------------------------------------+
-|  Function Call   |          Return / Evaluation            |
-+------------------+-----------------------------------------+
-| fib(0)           | → 0 (base case)                         |
-| fib(1)           | → 1 (base case)                         |
-| fib(2)           | → fib(1) + fib(0) = 1 + 0 = 1           |
-| fib(1)           | → 1 (base case)                         |
-| fib(3)           | → fib(2) + fib(1) = 1 + 1 = 2           |
-| fib(2)           | → fib(1) + fib(0) = 1 + 0 = 1           |
-| fib(4)           | → fib(3) + fib(2) = 2 + 1 = 3           |
-| fib(1)           | → 1 (base case)                         |
-| fib(5)           | → fib(4) + fib(1) = 3 + 1 = 5           |
-+------------------+-----------------------------------------+
-| main()           | ← returns 5                             |
-+------------------+-----------------------------------------+
-
-
-'''
 
 def sum_natural(n):
     if n == 0:
@@ -237,3 +211,34 @@ print(product_of_digit(563))
 
 
 '''
+
+#### Binary Recursion ####
+
+
+# Fibonacci series 
+
+def fib(n):
+    if n <= 1: # Base case
+        return n
+    return fib(n-1) + fib(n-2) # Recursive case
+
+'''
++------------------+-----------------------------------------+
+|  Function Call   |          Return / Evaluation            |
++------------------+-----------------------------------------+
+| fib(0)           | → 0 (base case)                         |
+| fib(1)           | → 1 (base case)                         |
+| fib(2)           | → fib(1) + fib(0) = 1 + 0 = 1           |
+| fib(1)           | → 1 (base case)                         |
+| fib(3)           | → fib(2) + fib(1) = 1 + 1 = 2           |
+| fib(2)           | → fib(1) + fib(0) = 1 + 0 = 1           |
+| fib(4)           | → fib(3) + fib(2) = 2 + 1 = 3           |
+| fib(1)           | → 1 (base case)                         |
+| fib(5)           | → fib(4) + fib(1) = 3 + 1 = 5           |
++------------------+-----------------------------------------+
+| main()           | ← returns 5                             |
++------------------+-----------------------------------------+
+
+
+'''
+

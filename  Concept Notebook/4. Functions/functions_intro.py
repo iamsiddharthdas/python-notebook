@@ -1,11 +1,27 @@
 
 '''
-Functions in Python
+Functions in Python - allow us to reuse code without repeating ourselves.
 
-Functions are reusable blocks of code that perform a specific task. 
 They help in organizing code, improving readability, and reducing redundancy. 
 Functions can take inputs (arguments) and return outputs (results). 
 In Python, functions are defined using the `def` keyword followed by the function name and parentheses.
+
+
+def hello_func():
+    pass -> this is a placeholder for the function body.
+    
+print(hello_func) # prints -> <function hello_func at 0x10470dda0> (a function in a certain location in memory but didn't execute the function)
+print(hello_func()) # prints -> None (its executes but prints None, because nothing inside to execute)
+
+So,
+
+def hello_func():
+    print('Hello World!')
+
+hello_func()
+
+prints-> Hello World!
+
 
 '''
 
