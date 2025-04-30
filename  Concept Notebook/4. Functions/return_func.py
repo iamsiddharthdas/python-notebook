@@ -105,7 +105,7 @@ info = {'name': 'Sid', 'age': 20}
 student_info(course, info) 
 
 # instead of passing the values individually, it passed the complete list and complete dictionary as a positional argument.
-# prints (['Maths', 'Art'], {'name': 'Sid', 'age': 20}) -> 
+# prints (['Maths', 'Art'], {'name': 'Sid', 'age': 20}) 
 
 
 student_info(*course, **info)   

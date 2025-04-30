@@ -31,7 +31,6 @@ Blast off!
 
 #### 1. Linear Recursion ####
 
-
 # Print the multiplication table of a number using basic recursion
 
 
@@ -241,4 +240,20 @@ def fib(n):
 
 
 '''
+
+
+"""
+
+KEY POINTS OF DIFFERENCE:
+
+
+| Feature              | Linear Recursion            | Binary Recursion             |
+|----------------------|-----------------------------|------------------------------|
+| Recursive Calls/Step | 1                           | 2                            |
+| Structure            | Straight line (depth)       | Tree (depth and width)       |
+| Example              | Factorial, Sum of List      | Fibonacci, Binary Tree       |
+| Memory Use           | Less (simpler stack)        | More (branches multiply)     |
+| Performance          | Faster (often O(n))         | Slower if not optimized      |
+
+"""
 
