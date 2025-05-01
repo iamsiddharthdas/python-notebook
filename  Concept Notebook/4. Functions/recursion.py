@@ -213,6 +213,125 @@ print(product_of_digit(563))
 
 #### Binary Recursion ####
 
+# Simple examples:
+
+def fun(x):
+    if x>0:
+        print(x)
+        fun(x-1)
+        fun(x-2)
+        
+fun(4)
+
+'''
+This version prints x FIRST, then calls fun(x-1) and fun(x-2).
+So the order is:
+1. Print x
+2. Go deeper with fun(x - 1)
+3. Then go sideways with fun(x - 2)
+
+fun(4)
+print(4)
+└── fun(3)
+    print(3)
+    └── fun(2)
+        print(2)
+        └── fun(1)
+            print(1)
+            └── fun(0) → base case, do nothing
+            └── fun(-1) → base case, do nothing
+        └── fun(0) → base case, do nothing
+    └── fun(1)
+        print(1)
+        └── fun(0) → base case, do nothing
+        └── fun(-1) → base case, do nothing
+└── fun(2)
+    print(2)
+    └── fun(1)
+        print(1)
+        └── fun(0) → base case, do nothing
+        └── fun(-1) → base case, do nothing
+    └── fun(0) → base case, do nothing
+
+Final printed output (in this order):
+4
+3
+2
+1
+1
+2
+1
+
+
+'''
+def fun(x):
+    if x>0:
+        fun(x-1)
+        print(x)
+        fun(x-2)
+        
+fun(5)
+
+'''
+
+We're calling fun(5). It follows this pattern:
+1. Go deeper with fun(x - 1)
+2. Print x
+3. Go sideways with fun(x - 2)
+
+fun(5)
+└── fun(4)
+    └── fun(3)
+        └── fun(2)
+            └── fun(1)
+                └── fun(0) → base case, do nothing
+                print(1)
+                └── fun(-1) → base case, do nothing
+            print(2)
+            └── fun(0) → base case, do nothing
+        print(3)
+        └── fun(1)
+            └── fun(0) → base case, do nothing
+            print(1)
+            └── fun(-1) → base case, do nothing
+    print(4)
+    └── fun(2)
+        └── fun(1)
+            └── fun(0) → base case, do nothing
+            print(1)
+            └── fun(-1) → base case, do nothing
+        print(2)
+        └── fun(0) → base case, do nothing
+print(5)
+└── fun(3)
+    └── fun(2)
+        └── fun(1)
+            └── fun(0) → base case, do nothing
+            print(1)
+            └── fun(-1) → base case, do nothing
+        print(2)
+        └── fun(0) → base case, do nothing
+    print(3)
+    └── fun(1)
+        └── fun(0) → base case, do nothing
+        print(1)
+        └── fun(-1) → base case, do nothing
+
+Final printed output:
+1
+2
+3
+1
+4
+1
+2
+5
+1
+2
+3
+1
+
+'''
 
 # Fibonacci series 
 
