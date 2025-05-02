@@ -224,36 +224,31 @@ def fun(x):
 fun(4)
 
 '''
-This version prints x FIRST, then calls fun(x-1) and fun(x-2).
-So the order is:
-1. Print x
-2. Go deeper with fun(x - 1)
-3. Then go sideways with fun(x - 2)
 
 fun(4)
-print(4)
-└── fun(3)
-    print(3)
-    └── fun(2)
-        print(2)
-        └── fun(1)
-            print(1)
-            └── fun(0) → base case, do nothing
-            └── fun(-1) → base case, do nothing
-        └── fun(0) → base case, do nothing
-    └── fun(1)
-        print(1)
-        └── fun(0) → base case, do nothing
-        └── fun(-1) → base case, do nothing
-└── fun(2)
-    print(2)
-    └── fun(1)
-        print(1)
-        └── fun(0) → base case, do nothing
-        └── fun(-1) → base case, do nothing
-    └── fun(0) → base case, do nothing
+├── print(4)         # 1st
+├── fun(3)
+│   ├── print(3)     # 2nd
+│   ├── fun(2)
+│   │   ├── print(2) # 3rd
+│   │   ├── fun(1)
+│   │   │   ├── print(1) # 4th
+│   │   │   ├── fun(0)
+│   │   │   └── fun(-1)
+│   │   └── fun(0)
+│   ├── fun(1)
+│   │   ├── print(1) # 5th
+│   │   ├── fun(0)
+│   │   └── fun(-1)
+├── fun(2)
+│   ├── print(2)     # 6th
+│   ├── fun(1)
+│   │   ├── print(1) # 7th
+│   │   ├── fun(0)
+│   │   └── fun(-1)
+│   └── fun(0)
 
-Final printed output (in this order):
+Output :
 4
 3
 2
@@ -274,48 +269,44 @@ fun(5)
 
 '''
 
-We're calling fun(5). It follows this pattern:
-1. Go deeper with fun(x - 1)
-2. Print x
-3. Go sideways with fun(x - 2)
 
 fun(5)
-└── fun(4)
-    └── fun(3)
-        └── fun(2)
-            └── fun(1)
-                └── fun(0) → base case, do nothing
-                print(1)
-                └── fun(-1) → base case, do nothing
-            print(2)
-            └── fun(0) → base case, do nothing
-        print(3)
-        └── fun(1)
-            └── fun(0) → base case, do nothing
-            print(1)
-            └── fun(-1) → base case, do nothing
-    print(4)
-    └── fun(2)
-        └── fun(1)
-            └── fun(0) → base case, do nothing
-            print(1)
-            └── fun(-1) → base case, do nothing
-        print(2)
-        └── fun(0) → base case, do nothing
-print(5)
+├── fun(4)
+│   ├── fun(3)
+│   │   ├── fun(2)
+│   │   │   ├── fun(1)
+│   │   │   │   ├── fun(0)
+│   │   │   │   └── print(1)    # 1st
+│   │   │   │   └── fun(-1)
+│   │   │   └── print(2)        # 2nd
+│   │   │   └── fun(0)
+│   │   └── print(3)            # 3rd
+│   │   └── fun(1)
+│   │       ├── fun(0)
+│   │       └── print(1)        # 4th
+│   │       └── fun(-1)
+│   └── print(4)                # 5th
+│   └── fun(2)
+│       ├── fun(1)
+│       │   ├── fun(0)
+│       │   └── print(1)        # 6th
+│       │   └── fun(-1)
+│       └── print(2)            # 7th
+│       └── fun(0)
+└── print(5)                    # 8th
 └── fun(3)
-    └── fun(2)
-        └── fun(1)
-            └── fun(0) → base case, do nothing
-            print(1)
-            └── fun(-1) → base case, do nothing
-        print(2)
-        └── fun(0) → base case, do nothing
-    print(3)
+    ├── fun(2)
+    │   ├── fun(1)
+    │   │   ├── fun(0)
+    │   │   └── print(1)        # 9th
+    │   │   └── fun(-1)
+    │   └── print(2)            # 10th
+    │   └── fun(0)
+    └── print(3)                # 11th
     └── fun(1)
-        └── fun(0) → base case, do nothing
-        print(1)
-        └── fun(-1) → base case, do nothing
+        ├── fun(0)
+        └── print(1)            # 12th
+        └── fun(-1)
 
 Final printed output:
 1
@@ -332,7 +323,70 @@ Final printed output:
 1
 
 '''
+def fun(x):
+    if x>0:
+        fun(x-1)
+        fun(x-2)
+        print(x)
+        
+fun(5)
 
+'''
+
+
+fun(5)
+├── fun(4)
+│   ├── fun(3)
+│   │   ├── fun(2)
+│   │   │   ├── fun(1)
+│   │   │   │   ├── fun(0)
+│   │   │   │   └── fun(-1)
+│   │   │   │   └── print(1)    # 1st
+│   │   │   ├── fun(0)
+│   │   │   └── print(2)        # 2nd
+│   │   ├── fun(1)
+│   │   │   ├── fun(0)
+│   │   │   └── fun(-1)
+│   │   │   └── print(1)        # 3rd
+│   │   └── print(3)            # 4th
+│   ├── fun(2)
+│   │   ├── fun(1)
+│   │   │   ├── fun(0)
+│   │   │   └── fun(-1)
+│   │   │   └── print(1)        # 5th
+│   │   ├── fun(0)
+│   │   └── print(2)            # 6th
+│   └── print(4)                # 7th
+├── fun(3)
+│   ├── fun(2)
+│   │   ├── fun(1)
+│   │   │   ├── fun(0)
+│   │   │   └── fun(-1)
+│   │   │   └── print(1)        # 8th
+│   │   ├── fun(0)
+│   │   └── print(2)            # 9th
+│   ├── fun(1)
+│   │   ├── fun(0)
+│   │   └── fun(-1)
+│   │   └── print(1)            # 10th
+│   └── print(3)                # 11th
+└── print(5)                    # 12th
+
+Output:
+1
+2
+1
+3
+1
+2
+4
+1
+2
+1
+3
+5
+
+'''
 # Fibonacci series 
 
 def fib(n):
