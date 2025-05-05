@@ -35,13 +35,15 @@ Blast off!
 
 
 def table(num,i):
-    if i>10: # Base case
+    
+    if i>10:
         return
     print(num,'X',i,'=',num*i)
-    
-    i = i+1 # Recursive case
+    i = i+1
     table(num,i)
-table(5,1)
+    
+num = int(input("Enter a number to print its multiplication table: "))
+table(num,1)
 
 '''
 Explanation:
@@ -56,32 +58,6 @@ Output:
 5 X 3 = 15..... till 5 X 10 = 50
 '''
 
-'''
-Function with Backtracking: Current calls -> previous calls
-
-def backtrack(choices, solution):
-    if is_solution(solution):
-        process_solution(solution)
-    else:
-        for choice in choices:
-            if is_valid(choice, solution):
-                solution.append(choice)
-                backtrack(choices, solution)
-                solution.pop()
-                
-
-
-Here's how it works:
-1. The function checks if the current solution is valid.
-2. If it is, it processes the solution.
-3. If not, it iterates through the choices.
-4. For each choice, it checks if it's valid.
-5. If valid, it adds the choice to the solution and calls itself recursively.
-
-Example:
-
-'''
-
 # Factorial of a number using recursion (backtracking)
 
 def factorial(n):
@@ -92,7 +68,7 @@ def factorial(n):
 
 '''
 
-Backtracking: Current calls -> previous calls
+Backtracking: Return statement is used.
 
 For n = 7
 
@@ -138,14 +114,21 @@ print(sum_natural(5))
 
 '''
 def power(a,b):
-    if b==0:
+    
+    if b == 0:
         return 1
-    return a*power(a,b-1)
+    else:
+        return a*power(a,b-1)
+        
+a = int(input('Base: '))
+b = int(input('Exponent: '))
 
-print((power(5,3)))
+print((power(a,b)))
 
 '''
 Output:
+a = 5
+b = 3
 
 +--------------------+----------------------------------+
 |   Function Call    |        Return / Evaluation       |
@@ -189,7 +172,9 @@ def product_of_digit(n):
     if n<10:
         return n
     return(n%10)* product_of_digit(n//10)
-
+    # n%10 - Remainder 
+    # n//10 - Quotient
+    
 print(product_of_digit(563))
 
 '''
@@ -211,9 +196,73 @@ print(product_of_digit(563))
 
 '''
 
+# Sum of digits of a number
+def sod(n):
+    if n<10:
+        return n
+    else:
+        return n%10 + sod(n//10)
+        # n%10 - Remainder
+        # n//10 - Quotient
+
+sod(1234)
+
+'''
++------------------------+--------------------------------------------+
+|    Function Call       |        Return / Evaluation                 |
++------------------------+--------------------------------------------+
+| sod(1234)              | → (1234 % 10) + sod(1234 // 10)            |
+|                        | → 4 + sod(123)                             |
+| sod(123)               | → (123 % 10) + sod(123 // 10)              |
+|                        | → 3 + sod(12)                              |
+| sod(12)                | → (12 % 10) + sod(12 // 10)                |
+|                        | → 2 + sod(1)                               |
+| sod(1)                 | → 1 (base case reached)                    |
++------------------------+--------------------------------------------+
+| Evaluation Rollback    | 2 + 1 = 3 (from sod(12))                   |
+|                        | 3 + 3 = 6 (from sod(123))                  |
+|                        | 4 + 6 = 10 (from sod(1234))                |
++------------------------+--------------------------------------------+
+| main() (print)         | ← prints 10                                |
++------------------------+--------------------------------------------+
+
+'''
+# Reverse the digits of a number 
+def reverse(n, rev=0):
+    if n == 0:
+        return rev
+    else:
+        return reverse(n // 10, rev * 10 + n % 10)
+        #n%10 - Remainder (last digit)
+        #n//10 - Quotient (all digits except last)
+
+n = int(input("Enter a number: "))  
+print(reverse(n))  
+
+'''
+for 
+
+n = 1234
+
++----------------------------+------------------------------------------------+
+|     Function Call          |         Return / Evaluation                    | 
++----------------------------+------------------------------------------------+
+| reverse(1234, 0)           | → reverse(123, 0 * 10 + 4) = reverse(123, 4)   |
+| reverse(123, 4)            | → reverse(12, 4 * 10 + 3) = reverse(12, 43)    |
+| reverse(12, 43)            | → reverse(1, 43 * 10 + 2) = reverse(1, 432)    |
+| reverse(1, 432)            | → reverse(0, 432 * 10 + 1) = reverse(0, 4321)  |
+| reverse(0, 4321)           | → 4321 (base case reached)                     |
++----------------------------+------------------------------------------------+
+| Evaluation Rollback        | Returns 4321 upward                            |
++----------------------------+------------------------------------------------+
+| main() (print)             | ← prints 4321                                  |
++----------------------------+------------------------------------------------+
+
+'''
+
 #### Binary Recursion ####
 
-# Simple examples:
+# Two function calls:
 
 def fun(x):
     if x>0:
@@ -226,27 +275,28 @@ fun(4)
 '''
 
 fun(4)
-├── print(4)         # 1st
-├── fun(3)
-│   ├── print(3)     # 2nd
-│   ├── fun(2)
-│   │   ├── print(2) # 3rd
-│   │   ├── fun(1)
-│   │   │   ├── print(1) # 4th
-│   │   │   ├── fun(0)
-│   │   │   └── fun(-1)
-│   │   └── fun(0)
-│   ├── fun(1)
-│   │   ├── print(1) # 5th
-│   │   ├── fun(0)
-│   │   └── fun(-1)
-├── fun(2)
-│   ├── print(2)     # 6th
-│   ├── fun(1)
-│   │   ├── print(1) # 7th
-│   │   ├── fun(0)
-│   │   └── fun(-1)
-│   └── fun(0)
+├── S1: print(4)                         # OUTPUT 1
+├── F1: fun(3)
+│   ├── S1: print(3)                     # OUTPUT 2
+│   ├── F1: fun(2)
+│   │   ├── S1: print(2)                 # OUTPUT 3
+│   │   ├── F1: fun(1)
+│   │   │   ├── S1: print(1)             # OUTPUT 4
+│   │   │   ├── F1: fun(0) ✘
+│   │   │   └── F2: fun(-1) ✘
+│   │   └── F2: fun(0) ✘
+│   └── F2: fun(1)
+│       ├── S1: print(1)                 # OUTPUT 5
+│       ├── F1: fun(0) ✘
+│       └── F2: fun(-1) ✘
+└── F2: fun(2)
+    ├── S1: print(2)                     # OUTPUT 6
+    ├── F1: fun(1)
+    │   ├── S1: print(1)                 # OUTPUT 7
+    │   ├── F1: fun(0) ✘
+    │   └── F2: fun(-1) ✘
+    └── F2: fun(0) ✘
+
 
 Output :
 4
@@ -271,42 +321,42 @@ fun(5)
 
 
 fun(5)
-├── fun(4)
-│   ├── fun(3)
-│   │   ├── fun(2)
-│   │   │   ├── fun(1)
-│   │   │   │   ├── fun(0)
-│   │   │   │   └── print(1)    # 1st
-│   │   │   │   └── fun(-1)
-│   │   │   └── print(2)        # 2nd
-│   │   │   └── fun(0)
-│   │   └── print(3)            # 3rd
-│   │   └── fun(1)
-│   │       ├── fun(0)
-│   │       └── print(1)        # 4th
-│   │       └── fun(-1)
-│   └── print(4)                # 5th
-│   └── fun(2)
-│       ├── fun(1)
-│       │   ├── fun(0)
-│       │   └── print(1)        # 6th
-│       │   └── fun(-1)
-│       └── print(2)            # 7th
-│       └── fun(0)
-└── print(5)                    # 8th
-└── fun(3)
-    ├── fun(2)
-    │   ├── fun(1)
-    │   │   ├── fun(0)
-    │   │   └── print(1)        # 9th
-    │   │   └── fun(-1)
-    │   └── print(2)            # 10th
-    │   └── fun(0)
-    └── print(3)                # 11th
-    └── fun(1)
-        ├── fun(0)
-        └── print(1)            # 12th
-        └── fun(-1)
+├── F1: fun(4)
+│   ├── F1: fun(3)
+│   │   ├── F1: fun(2)
+│   │   │   ├── F1: fun(1)
+│   │   │   │   ├── F1: fun(0) ✘
+│   │   │   │   ├── S1: print(1)         # OUTPUT 1
+│   │   │   │   └── F2: fun(-1) ✘
+│   │   │   ├── S1: print(2)             # OUTPUT 2
+│   │   │   └── F2: fun(0) ✘
+│   │   ├── S1: print(3)                 # OUTPUT 3
+│   │   └── F2: fun(1)
+│   │       ├── F1: fun(0) ✘
+│   │       ├── S1: print(1)             # OUTPUT 4
+│   │       └── F2: fun(-1) ✘
+│   ├── S1: print(4)                     # OUTPUT 5
+│   └── F2: fun(2)
+│       ├── F1: fun(1)
+│       │   ├── F1: fun(0) ✘
+│       │   ├── S1: print(1)             # OUTPUT 6
+│       │   └── F2: fun(-1) ✘
+│       ├── S1: print(2)                 # OUTPUT 7
+│       └── F2: fun(0) ✘
+├── S1: print(5)                         # OUTPUT 8
+└── F2: fun(3)
+    ├── F1: fun(2)
+    │   ├── F1: fun(1)
+    │   │   ├── F1: fun(0) ✘
+    │   │   ├── S1: print(1)             # OUTPUT 9
+    │   │   └── F2: fun(-1) ✘
+    │   ├── S1: print(2)                 # OUTPUT 10
+    │   └── F2: fun(0) ✘
+    ├── S1: print(3)                     # OUTPUT 11
+    └── F2: fun(1)
+        ├── F1: fun(0) ✘
+        ├── S1: print(1)                 # OUTPUT 12
+        └── F2: fun(-1) ✘
 
 Final printed output:
 1
@@ -335,42 +385,42 @@ fun(5)
 
 
 fun(5)
-├── fun(4)
-│   ├── fun(3)
-│   │   ├── fun(2)
-│   │   │   ├── fun(1)
-│   │   │   │   ├── fun(0)
-│   │   │   │   └── fun(-1)
-│   │   │   │   └── print(1)    # 1st
-│   │   │   ├── fun(0)
-│   │   │   └── print(2)        # 2nd
-│   │   ├── fun(1)
-│   │   │   ├── fun(0)
-│   │   │   └── fun(-1)
-│   │   │   └── print(1)        # 3rd
-│   │   └── print(3)            # 4th
-│   ├── fun(2)
-│   │   ├── fun(1)
-│   │   │   ├── fun(0)
-│   │   │   └── fun(-1)
-│   │   │   └── print(1)        # 5th
-│   │   ├── fun(0)
-│   │   └── print(2)            # 6th
-│   └── print(4)                # 7th
-├── fun(3)
-│   ├── fun(2)
-│   │   ├── fun(1)
-│   │   │   ├── fun(0)
-│   │   │   └── fun(-1)
-│   │   │   └── print(1)        # 8th
-│   │   ├── fun(0)
-│   │   └── print(2)            # 9th
-│   ├── fun(1)
-│   │   ├── fun(0)
-│   │   └── fun(-1)
-│   │   └── print(1)            # 10th
-│   └── print(3)                # 11th
-└── print(5)                    # 12th
+├── F1: fun(4)
+│   ├── F1: fun(3)
+│   │   ├── F1: fun(2)
+│   │   │   ├── F1: fun(1)
+│   │   │   │   ├── F1: fun(0) ✘
+│   │   │   │   ├── F2: fun(-1) ✘
+│   │   │   │   └── S1: print(1)         # OUTPUT 1
+│   │   │   ├── F2: fun(0) ✘
+│   │   │   └── S1: print(2)             # OUTPUT 2
+│   │   ├── F2: fun(1)
+│   │   │   ├── F1: fun(0) ✘
+│   │   │   ├── F2: fun(-1) ✘
+│   │   │   └── S1: print(1)             # OUTPUT 3
+│   │   └── S1: print(3)                 # OUTPUT 4
+│   ├── F2: fun(2)
+│   │   ├── F1: fun(1)
+│   │   │   ├── F1: fun(0) ✘
+│   │   │   ├── F2: fun(-1) ✘
+│   │   │   └── S1: print(1)             # OUTPUT 5
+│   │   ├── F2: fun(0) ✘
+│   │   └── S1: print(2)                 # OUTPUT 6
+│   └── S1: print(4)                     # OUTPUT 7
+├── F2: fun(3)
+│   ├── F1: fun(2)
+│   │   ├── F1: fun(1)
+│   │   │   ├── F1: fun(0) ✘
+│   │   │   ├── F2: fun(-1) ✘
+│   │   │   └── S1: print(1)             # OUTPUT 8
+│   │   ├── F2: fun(0) ✘
+│   │   └── S1: print(2)                 # OUTPUT 9
+│   ├── F2: fun(1)
+│   │   ├── F1: fun(0) ✘
+│   │   ├── F2: fun(-1) ✘
+│   │   └── S1: print(1)                 # OUTPUT 10
+│   └── S1: print(3)                     # OUTPUT 11
+└── S1: print(5)                         # OUTPUT 12
 
 Output:
 1
@@ -388,6 +438,8 @@ Output:
 
 '''
 
+# Three function calls:
+
 def fun(x,y,z):
     if x>0:
         fun(x-2,y,z)
@@ -400,52 +452,69 @@ def fun(x,y,z):
 fun(4,5,6)
 
 '''
-fun(4,5,6)
-├── fun(2,5,6)
-│   ├── fun(0,5,6) → return
-│   ├── fun(1,25,6)
-│   │   ├── fun(-1,25,6) → return
-│   │   ├── fun(0,45,6) → return
-│   │   └── print(1, 45, 12)        # 1st
-│   └── print(2, 25, 12)            # 2nd
-├── fun(3,25,6)
-│   ├── fun(1,25,6)
-│   │   ├── fun(-1,25,6) → return
-│   │   ├── fun(0,45,6) → return
-│   │   └── print(1, 45, 12)        # 3rd
-│   ├── fun(2,45,6)
-│   │   ├── fun(0,45,6) → return
-│   │   ├── fun(1,65,6)
-│   │   │   ├── fun(-1,65,6) → return
-│   │   │   ├── fun(0,85,6) → return
-│   │   │   └── print(1, 85, 12)    # 4th
-│   │   └── print(2, 65, 12)        # 5th
-│   └── print(3, 45, 12)            # 6th
-└── print(4, 5+20=25, 6*2=12)       # 7th
+fun(4, 5, 6)
+├── F1: fun(2, 5, 6)
+│   ├── F1: fun(0, 5, 6) ✘
+│   ├── y = 5 + 20 = 25
+│   ├── F2: fun(1, 25, 6)
+│   │   ├── F1: fun(-1, 25, 6) ✘
+│   │   ├── y = 25 + 20 = 45
+│   │   ├── F2: fun(0, 45, 6) ✘
+│   │   ├── z = 6 * 2 = 12
+│   │   ├── S1: print(1, 45, 12)         → OUTPUT 1
+│   │   └── F3: fun(-1, 45, 12) ✘
+│   ├── z = 6 * 2 = 12
+│   ├── S1: print(2, 25, 12)             → OUTPUT 2
+│   └── F3: fun(0, 25, 12) ✘
 
-THEN...
+├── y = 5 + 20 = 25
+├── F2: fun(3, 25, 6)
+│   ├── F1: fun(1, 25, 6)
+│   │   ├── F1: fun(-1, 25, 6) ✘
+│   │   ├── y = 25 + 20 = 45
+│   │   ├── F2: fun(0, 45, 6) ✘
+│   │   ├── z = 6 * 2 = 12
+│   │   ├── S1: print(1, 45, 12)         → OUTPUT 3
+│   │   └── F3: fun(-1, 45, 12) ✘
+│   ├── y = 25 + 20 = 45
+│   ├── F2: fun(2, 45, 6)
+│   │   ├── F1: fun(0, 45, 6) ✘
+│   │   ├── y = 45 + 20 = 65
+│   │   ├── F2: fun(1, 65, 6)
+│   │   │   ├── F1: fun(-1, 65, 6) ✘
+│   │   │   ├── y = 65 + 20 = 85
+│   │   │   ├── F2: fun(0, 85, 6) ✘
+│   │   │   ├── z = 6 * 2 = 12
+│   │   │   ├── S1: print(1, 85, 12)     → OUTPUT 4
+│   │   │   └── F3: fun(-1, 85, 12) ✘
+│   │   ├── z = 6 * 2 = 12
+│   │   ├── S1: print(2, 65, 12)         → OUTPUT 5
+│   │   └── F3: fun(0, 65, 12) ✘
+│   ├── z = 6 * 2 = 12
+│   ├── S1: print(3, 45, 12)             → OUTPUT 6
+│   └── F3: fun(1, 45, 12)
+│       ├── F1: fun(-1, 45, 12) ✘
+│       ├── y = 45 + 20 = 65
+│       ├── F2: fun(0, 65, 12) ✘
+│       ├── z = 12 * 2 = 24
+│       ├── S1: print(1, 65, 24)         → OUTPUT 7
+│       └── F3: fun(-1, 65, 24) ✘
 
-fun(2,25,12)
-├── fun(0,25,12) → return
-├── fun(1,45,12)
-│   ├── fun(-1,45,12) → return
-│   ├── fun(0,65,12) → return
-│   └── print(1, 65, 24)            # 8th
-└── print(2, 45, 24)                # 9th
-
-fun(3,45,12)
-├── fun(1,45,12)
-│   ├── fun(-1,45,12) → return
-│   ├── fun(0,65,12) → return
-│   └── print(1, 65, 24)            # 10th
-├── fun(2,65,12)
-│   ├── fun(0,65,12) → return
-│   ├── fun(1,85,12)
-│   │   ├── fun(-1,85,12) → return
-│   │   ├── fun(0,105,12) → return
-│   │   └── print(1, 105, 24)       # 11th
-│   └── print(2, 85, 24)            # 12th
-└── print(3, 65, 24)                # 13th
+├── z = 6 * 2 = 12
+├── S1: print(4, 25, 12)                 → OUTPUT 8
+└── F3: fun(2, 25, 12)
+    ├── F1: fun(0, 25, 12) ✘
+    ├── y = 25 + 20 = 45
+    ├── F2: fun(1, 45, 12)
+    │   ├── F1: fun(-1, 45, 12) ✘
+    │   ├── y = 45 + 20 = 65
+    │   ├── F2: fun(0, 65, 12) ✘
+    │   ├── z = 12 * 2 = 24
+    │   ├── S1: print(1, 65, 24)         → OUTPUT 9
+    │   └── F3: fun(-1, 65, 24) ✘
+    ├── z = 12 * 2 = 24
+    ├── S1: print(2, 45, 24)             → OUTPUT 10
+    └── F3: fun(0, 45, 24) ✘
 
 Output:
 
@@ -455,13 +524,10 @@ Output:
 1 85 12
 2 65 12
 3 45 12
+1 65 24
 4 25 12
 1 65 24
 2 45 24
-1 65 24
-1 105 24
-2 85 24
-3 65 24
 
 
 '''
@@ -476,45 +542,86 @@ def fun(x, y, z):
         fun(x - 2, y, z)
         
 fun(4,5,6)
-
 '''
-fun(4,5,6)        → z = 12
-├── fun(2,5,12)   → z = 24
-│   ├── fun(0,5,24) → return
-│   ├── fun(1,25,24) → z = 48
-│   │   ├── fun(-1,25,48) → return
-│   │   ├── fun(0,45,48) → return
-│   │   └── print(1, 45, 48)         # 1st
-│   └── print(2, 25, 24)             # 2nd
-├── fun(3,25,12) → z = 24
-│   ├── fun(1,25,24) → z = 48
-│   │   ├── fun(-1,25,48) → return
-│   │   ├── fun(0,45,48) → return
-│   │   └── print(1, 45, 48)         # 3rd
-│   ├── fun(2,45,24) → z = 48
-│   │   ├── fun(0,45,48) → return
-│   │   ├── fun(1,65,48) → z = 96
-│   │   │   ├── fun(-1,65,96) → return
-│   │   │   ├── fun(0,85,96) → return
-│   │   │   └── print(1, 85, 96)     # 4th
-│   │   └── print(2, 65, 48)         # 5th
-│   └── print(3, 45, 24)             # 6th
-└── print(4, 5+20=25, 12)            # 7th
+fun(4, 5, 6)
+├── S1: z = 6 * 2 = 12
+├── F1: fun(2, 5, 12)
+│   ├── S1: z = 12 * 2 = 24
+│   ├── F1: fun(0, 5, 24) ✘
+│   ├── y = 5 + 20 = 25
+│   ├── F2: fun(1, 25, 24)
+│   │   ├── S1: z = 24 * 2 = 48
+│   │   ├── F1: fun(-1, 25, 48) ✘
+│   │   ├── y = 25 + 20 = 45
+│   │   ├── F2: fun(0, 45, 48) ✘
+│   │   ├── S2: print(1, 45, 48)         → OUTPUT 1
+│   │   └── F3: fun(-1, 45, 48) ✘
+│   ├── S2: print(2, 25, 24)             → OUTPUT 2
+│   └── F3: fun(0, 25, 24) ✘
+
+├── y = 5 + 20 = 25
+├── F2: fun(3, 25, 12)
+│   ├── S1: z = 12 * 2 = 24
+│   ├── F1: fun(1, 25, 24)
+│   │   ├── S1: z = 24 * 2 = 48
+│   │   ├── F1: fun(-1, 25, 48) ✘
+│   │   ├── y = 25 + 20 = 45
+│   │   ├── F2: fun(0, 45, 48) ✘
+│   │   ├── S2: print(1, 45, 48)         → OUTPUT 3
+│   │   └── F3: fun(-1, 45, 48) ✘
+│   ├── y = 25 + 20 = 45
+│   ├── F2: fun(2, 45, 24)
+│   │   ├── S1: z = 24 * 2 = 48
+│   │   ├── F1: fun(0, 45, 48) ✘
+│   │   ├── y = 45 + 20 = 65
+│   │   ├── F2: fun(1, 65, 48)
+│   │   │   ├── S1: z = 48 * 2 = 96
+│   │   │   ├── F1: fun(-1, 65, 96) ✘
+│   │   │   ├── y = 65 + 20 = 85
+│   │   │   ├── F2: fun(0, 85, 96) ✘
+│   │   │   ├── S2: print(1, 85, 96)     → OUTPUT 4
+│   │   │   └── F3: fun(-1, 85, 96) ✘
+│   │   ├── S2: print(2, 65, 48)         → OUTPUT 5
+│   │   └── F3: fun(0, 65, 48) ✘
+│   ├── S2: print(3, 45, 24)             → OUTPUT 6
+│   └── F3: fun(1, 45, 24)
+│       ├── S1: z = 24 * 2 = 48
+│       ├── F1: fun(-1, 45, 48) ✘
+│       ├── y = 45 + 20 = 65
+│       ├── F2: fun(0, 65, 48) ✘
+│       ├── S2: print(1, 65, 48)         → OUTPUT 7
+│       └── F3: fun(-1, 65, 48) ✘
+
+├── S2: print(4, 25, 12)                 → OUTPUT 8
+└── F3: fun(2, 25, 12)
+    ├── S1: z = 12 * 2 = 24
+    ├── F1: fun(0, 25, 24) ✘
+    ├── y = 25 + 20 = 45
+    ├── F2: fun(1, 45, 24)
+    │   ├── S1: z = 24 * 2 = 48
+    │   ├── F1: fun(-1, 45, 48) ✘
+    │   ├── y = 45 + 20 = 65
+    │   ├── F2: fun(0, 65, 48) ✘
+    │   ├── S2: print(1, 65, 48)         → OUTPUT 9
+    │   └── F3: fun(-1, 65, 48) ✘
+    ├── S2: print(2, 45, 24)             → OUTPUT 10
+    └── F3: fun(0, 45, 24) ✘
+
 
 Output:
-
 1 45 48
 2 25 24
 1 45 48
 1 85 96
 2 65 48
 3 45 24
+1 65 48
 4 25 12
+1 65 48
+2 45 24
 
 '''
-
-
-# Fibonacci series (Backtracking)
+# Fibonacci series 
 
 def fib(n):
     if n <= 1: # Base case (0,1)
@@ -522,77 +629,81 @@ def fib(n):
     return fib(n-1) + fib(n-2) # Recursive case
 for i in range(8):
     print((fib(i)))
-    
-    
+
 '''
 fib(0) → 0                            # 1st
+
 fib(1) → 1                            # 2nd
+
 fib(2)
 ├── fib(1) → 1
 ├── fib(0) → 0
 └── return 1 + 0 = 1                  # 3rd
+
 fib(3)
 ├── fib(2)
 │   ├── fib(1) → 1
-│   └── fib(0) → 0
+│   ├── fib(0) → 0
 │   └── return 1 + 0 = 1
 ├── fib(1) → 1
 └── return 1 + 1 = 2                  # 4th
+
 fib(4)
 ├── fib(3)
 │   ├── fib(2)
 │   │   ├── fib(1) → 1
-│   │   └── fib(0) → 0
+│   │   ├── fib(0) → 0
 │   │   └── return 1 + 0 = 1
 │   ├── fib(1) → 1
 │   └── return 1 + 1 = 2
 ├── fib(2)
 │   ├── fib(1) → 1
-│   └── fib(0) → 0
+│   ├── fib(0) → 0
 │   └── return 1 + 0 = 1
 └── return 2 + 1 = 3                  # 5th
+
 fib(5)
 ├── fib(4)
 │   ├── fib(3)
 │   │   ├── fib(2)
 │   │   │   ├── fib(1) → 1
-│   │   │   └── fib(0) → 0
+│   │   │   ├── fib(0) → 0
 │   │   │   └── return 1 + 0 = 1
 │   │   ├── fib(1) → 1
 │   │   └── return 1 + 1 = 2
 │   ├── fib(2)
 │   │   ├── fib(1) → 1
-│   │   └── fib(0) → 0
+│   │   ├── fib(0) → 0
 │   │   └── return 1 + 0 = 1
 │   └── return 2 + 1 = 3
 ├── fib(3)
 │   ├── fib(2)
 │   │   ├── fib(1) → 1
-│   │   └── fib(0) → 0
+│   │   ├── fib(0) → 0
 │   │   └── return 1 + 0 = 1
 │   ├── fib(1) → 1
 │   └── return 1 + 1 = 2
 └── return 3 + 2 = 5                  # 6th
+
 fib(6)
 ├── fib(5)
 │   ├── fib(4)
 │   │   ├── fib(3)
 │   │   │   ├── fib(2)
 │   │   │   │   ├── fib(1) → 1
-│   │   │   │   └── fib(0) → 0
+│   │   │   │   ├── fib(0) → 0
+│   │   │   │   └── return 1 + 0 = 1
+│   │   │   ├── fib(1) → 1
+│   │   │   └── return 1 + 1 = 2
+│   │   ├── fib(2)
+│   │   │   ├── fib(1) → 1
+│   │   │   ├── fib(0) → 0
 │   │   │   └── return 1 + 0 = 1
-│   │   ├── fib(1) → 1
-│   │   └── return 1 + 1 = 2
-│   ├── fib(2)
-│   │   ├── fib(1) → 1
-│   │   └── fib(0) → 0
-│   │   └── return 1 + 0 = 1
-│   └── return 2 + 1 = 3
-│
+│   │   └── return 2 + 1 = 3
 │   ├── fib(3)
 │   │   ├── fib(2)
 │   │   │   ├── fib(1) → 1
-│   │   │   └── fib(0) → 0
+│   │   │   ├── fib(0) → 0
 │   │   │   └── return 1 + 0 = 1
 │   │   ├── fib(1) → 1
 │   │   └── return 1 + 1 = 2
@@ -601,16 +712,17 @@ fib(6)
 │   ├── fib(3)
 │   │   ├── fib(2)
 │   │   │   ├── fib(1) → 1
-│   │   │   └── fib(0) → 0
+│   │   │   ├── fib(0) → 0
 │   │   │   └── return 1 + 0 = 1
 │   │   ├── fib(1) → 1
 │   │   └── return 1 + 1 = 2
 │   ├── fib(2)
 │   │   ├── fib(1) → 1
-│   │   └── fib(0) → 0
+│   │   ├── fib(0) → 0
 │   │   └── return 1 + 0 = 1
 │   └── return 2 + 1 = 3
 └── return 5 + 3 = 8                  # 7th
+
 fib(7)
 ├── fib(6)
 │   ├── fib(5)
@@ -618,37 +730,60 @@ fib(7)
 │   │   │   ├── fib(3)
 │   │   │   │   ├── fib(2)
 │   │   │   │   │   ├── fib(1) → 1
-│   │   │   │   │   └── fib(0) → 0
+│   │   │   │   │   ├── fib(0) → 0
+│   │   │   │   │   └── return 1 + 0 = 1
+│   │   │   │   ├── fib(1) → 1
+│   │   │   │   └── return 1 + 1 = 2
+│   │   │   ├── fib(2)
+│   │   │   │   ├── fib(1) → 1
+│   │   │   │   ├── fib(0) → 0
+│   │   │   │   └── return 1 + 0 = 1
+│   │   │   └── return 2 + 1 = 3
+│   │   ├── fib(3)
+│   │   │   ├── fib(2)
+│   │   │   │   ├── fib(1) → 1
+│   │   │   │   ├── fib(0) → 0
+│   │   │   │   └── return 1 + 0 = 1
+│   │   │   ├── fib(1) → 1
+│   │   │   └── return 1 + 1 = 2
+│   │   └── return 3 + 2 = 5
+│   ├── fib(4)
+│   │   ├── fib(3)
+│   │   │   ├── fib(2)
+│   │   │   │   ├── fib(1) → 1
+│   │   │   │   ├── fib(0) → 0
 │   │   │   │   └── return 1 + 0 = 1
 │   │   │   ├── fib(1) → 1
 │   │   │   └── return 1 + 1 = 2
 │   │   ├── fib(2)
 │   │   │   ├── fib(1) → 1
-│   │   │   └── fib(0) → 0
+│   │   │   ├── fib(0) → 0
+│   │   │   └── return 1 + 0 = 1
+│   │   └── return 2 + 1 = 3
+│   └── return 5 + 3 = 8
+├── fib(5)
+│   ├── fib(4)
+│   │   ├── fib(3)
+│   │   │   ├── fib(2)
+│   │   │   │   ├── fib(1) → 1
+│   │   │   │   ├── fib(0) → 0
+│   │   │   │   └── return 1 + 0 = 1
+│   │   │   ├── fib(1) → 1
+│   │   │   └── return 1 + 1 = 2
+│   │   ├── fib(2)
+│   │   │   ├── fib(1) → 1
+│   │   │   ├── fib(0) → 0
 │   │   │   └── return 1 + 0 = 1
 │   │   └── return 2 + 1 = 3
 │   ├── fib(3)
 │   │   ├── fib(2)
 │   │   │   ├── fib(1) → 1
-│   │   │   └── fib(0) → 0
+│   │   │   ├── fib(0) → 0
 │   │   │   └── return 1 + 0 = 1
 │   │   ├── fib(1) → 1
 │   │   └── return 1 + 1 = 2
 │   └── return 3 + 2 = 5
-├── fib(4)
-│   ├── fib(3)
-│   │   ├── fib(2)
-│   │   │   ├── fib(1) → 1
-│   │   │   └── fib(0) → 0
-│   │   │   └── return 1 + 0 = 1
-│   │   ├── fib(1) → 1
-│   │   └── return 1 + 1 = 2
-│   ├── fib(2)
-│   │   ├── fib(1) → 1
-│   │   └── fib(0) → 0
-│   │   └── return 1 + 0 = 1
-│   └── return 2 + 1 = 3
-└── return 5 + 3 = 13                 # 8th
+└── return 8 + 5 = 13                 # 8th 
 
 Output:
 
