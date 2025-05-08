@@ -827,3 +827,151 @@ def tribonacci(n):
 for i in range(8):
     print(tribonacci(i))
     
+'''
+tribonacci(0) → 0                     # 1st
+
+tribonacci(1) → 1                     # 2nd
+
+tribonacci(2) → 1                     # 3rd
+
+tribonacci(3)
+├── tribonacci(2) → 1
+├── tribonacci(1) → 1
+├── tribonacci(0) → 0
+└── return 1 + 1 + 0 = 2              # 4th
+
+tribonacci(4)
+├── tribonacci(3)
+│   ├── tribonacci(2) → 1
+│   ├── tribonacci(1) → 1
+│   ├── tribonacci(0) → 0
+│   └── return 1 + 1 + 0 = 2
+├── tribonacci(2) → 1
+├── tribonacci(1) → 1
+└── return 2 + 1 + 1 = 4              # 5th
+
+tribonacci(5)
+├── tribonacci(4)
+│   ├── tribonacci(3)
+│   │   ├── tribonacci(2) → 1
+│   │   ├── tribonacci(1) → 1
+│   │   ├── tribonacci(0) → 0
+│   │   └── return 1 + 1 + 0 = 2
+│   ├── tribonacci(2) → 1
+│   ├── tribonacci(1) → 1
+│   └── return 2 + 1 + 1 = 4
+├── tribonacci(3)
+│   ├── tribonacci(2) → 1
+│   ├── tribonacci(1) → 1
+│   ├── tribonacci(0) → 0
+│   └── return 1 + 1 + 0 = 2
+├── tribonacci(2) → 1
+└── return 4 + 2 + 1 = 7              # 6th
+
+tribonacci(6)
+├── tribonacci(5)
+│   ├── tribonacci(4)
+│   │   ├── tribonacci(3)
+│   │   │   ├── tribonacci(2) → 1
+│   │   │   ├── tribonacci(1) → 1
+│   │   │   ├── tribonacci(0) → 0
+│   │   │   └── return 1 + 1 + 0 = 2
+│   │   ├── tribonacci(2) → 1
+│   │   ├── tribonacci(1) → 1
+│   │   └── return 2 + 1 + 1 = 4
+│   ├── tribonacci(3)
+│   │   ├── tribonacci(2) → 1
+│   │   ├── tribonacci(1) → 1
+│   │   ├── tribonacci(0) → 0
+│   │   └── return 1 + 1 + 0 = 2
+│   ├── tribonacci(2) → 1
+│   └── return 4 + 2 + 1 = 7
+├── tribonacci(4)
+│   ├── tribonacci(3)
+│   │   ├── tribonacci(2) → 1
+│   │   ├── tribonacci(1) → 1
+│   │   ├── tribonacci(0) → 0
+│   │   └── return 1 + 1 + 0 = 2
+│   ├── tribonacci(2) → 1
+│   ├── tribonacci(1) → 1
+│   └── return 2 + 1 + 1 = 4
+├── tribonacci(3)
+│   ├── tribonacci(2) → 1
+│   ├── tribonacci(1) → 1
+│   ├── tribonacci(0) → 0
+│   └── return 1 + 1 + 0 = 2
+└── return 7 + 4 + 2 = 13             # 7th
+
+tribonacci(7)
+├── tribonacci(6)
+│   ├── tribonacci(5)
+│   │   ├── tribonacci(4)
+│   │   │   ├── tribonacci(3)
+│   │   │   │   ├── tribonacci(2) → 1
+│   │   │   │   ├── tribonacci(1) → 1
+│   │   │   │   ├── tribonacci(0) → 0
+│   │   │   │   └── return 1 + 1 + 0 = 2
+│   │   │   ├── tribonacci(2) → 1
+│   │   │   ├── tribonacci(1) → 1
+│   │   │   └── return 2 + 1 + 1 = 4
+│   │   ├── tribonacci(3)
+│   │   │   ├── tribonacci(2) → 1
+│   │   │   ├── tribonacci(1) → 1
+│   │   │   ├── tribonacci(0) → 0
+│   │   │   └── return 1 + 1 + 0 = 2
+│   │   ├── tribonacci(2) → 1
+│   │   └── return 4 + 2 + 1 = 7
+│   ├── tribonacci(4)
+│   │   ├── tribonacci(3)
+│   │   │   ├── tribonacci(2) → 1
+│   │   │   ├── tribonacci(1) → 1
+│   │   │   ├── tribonacci(0) → 0
+│   │   │   └── return 1 + 1 + 0 = 2
+│   │   ├── tribonacci(2) → 1
+│   │   ├── tribonacci(1) → 1
+│   │   └── return 2 + 1 + 1 = 4
+│   ├── tribonacci(3)
+│   │   ├── tribonacci(2) → 1
+│   │   ├── tribonacci(1) → 1
+│   │   ├── tribonacci(0) → 0
+│   │   └── return 1 + 1 + 0 = 2
+│   └── return 7 + 4 + 2 = 13
+├── tribonacci(5)
+│   ├── tribonacci(4)
+│   │   ├── tribonacci(3)
+│   │   │   ├── tribonacci(2) → 1
+│   │   │   ├── tribonacci(1) → 1
+│   │   │   ├── tribonacci(0) → 0
+│   │   │   └── return 1 + 1 + 0 = 2
+│   │   ├── tribonacci(2) → 1
+│   │   ├── tribonacci(1) → 1
+│   │   └── return 2 + 1 + 1 = 4
+│   ├── tribonacci(3)
+│   │   ├── tribonacci(2) → 1
+│   │   ├── tribonacci(1) → 1
+│   │   ├── tribonacci(0) → 0
+│   │   └── return 1 + 1 + 0 = 2
+│   ├── tribonacci(2) → 1
+│   └── return 4 + 2 + 1 = 7
+├── tribonacci(4)
+│   ├── tribonacci(3)
+│   │   ├── tribonacci(2) → 1
+│   │   ├── tribonacci(1) → 1
+│   │   ├── tribonacci(0) → 0
+│   │   └── return 1 + 1 + 0 = 2
+│   ├── tribonacci(2) → 1
+│   ├── tribonacci(1) → 1
+│   └── return 2 + 1 + 1 = 4
+└── return 13 + 7 + 4 = 24            # 8th
+
+Output:
+0
+1
+1
+2
+4
+7
+13
+24
+
+'''
