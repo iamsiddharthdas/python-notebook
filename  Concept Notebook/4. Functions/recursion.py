@@ -1,4 +1,11 @@
 '''
+Why Recursion?
+
+Loops are used in linear data, but for tree and graph data structures, loops are not efficient.
+Hence, recursion is used to solve complex problems in tree and graph data structures.
+
+What is Recursion?
+
 Recursion is when a function calls itself to solve a problem.
 
 Basic format of a recursive function:
