@@ -155,6 +155,109 @@ for i in range(3):
 print(z) # this will print the sum of the two 2D arrays
 
 
+# Multiplication of two 2D arrays (matrix multiplication)
+
+x = [[10,20,30],[40,50,60],[70,80,90]]
+
+y = [[1,1,1],[2,2,2],[3,3,3]]
+
+z = []
+
+for i in range(len(x)):
+    z.append([]) 
+    for j in range(len(x[i])): 
+        z[i].append(0) # this will create a new list for each column of the 2D array
+        for k in range(len(y)):
+            z[i][j] += x[i][k] * y[k][j] # this will multiply the two 2D arrays
+            # z[i][j] += x[i][k] / y[k][j] # this will divide the two 2D arrays
+
+print(z) # this will print the product of the two 2D arrays
+
+
+# Transformation of 2D array (matrix transformation)
+
+'''
+Row becomes column and column becomes row
+Like this,
+
+[10,20,30]     [10,40,70]
+[40,50,60]  => [20,50,80]
+[70,80,90]     [30,60,90]
+
+'''
+
+x = [[10,20,30],[40,50,60],[70,80,90]]
+
+for i in range(len(x)):
+    for j in range(len(x[i])):
+        print(x[j][i],end=" ") # row becomes column and column becomes row
+        
+    print(end="\n") # this will print the 2D array in matrix form
+
+# Removing duplicates from a 2D array
+
+'''
+You can remove duplicates from a 2D array by using a set to store the unique elements and then converting the set back to a list.
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [1, 2, 3],
+    [7, 8, 9]
+]
+
+unique_matrix = []
+for row in matrix:
+    if row not in unique_matrix:
+        unique_matrix.append(row)
+
+print("Matrix without duplicate rows:")
+for row in unique_matrix:
+    print(row)
+
+'''
+
+x = [10,20,20,30,20,10,80,81,60,42,2,31,2,1,1,1]
+
+y = []
+
+for i in range(len(x)):
+    if x[i] not in y:
+        y.append(x[i]) # this will add the x array to the y array if it is not already present in the y array
+
+print("The array without duplicates is: ",y) # this will print the array without duplicates
+
+'''
+Output:
+The array without duplicates is:  [10, 20, 30, 80, 81, 60, 42, 2, 31, 1]
+
+'''
+
+# List comprehension
+
+y = [11,10,20,22,31,45,67,83,75]
+x = [y[i] for i in range(len(y)) if y[i]%2!=0]
+# x =[y[i] if y[i]%2==0 else True for i in range(len(y))] # this will add the y array to the x array if it is even
+# x =[y[i] if y[i]%2==0 else 'Odd Value' for i in range(len(y))] # this will add the y array to the x array if it is even and if it is odd then it will add 'Odd Value' to the x array
+
+print(x)
+
+# Remove duplicates from a list using list comprehension 
+
+
+x = [10,10,11,20,40,50,30,11,40,66,98,90,44,34,33,22]
+y = []
+
+z = [y.append(i) for i in x if i not in y] # this will add the elements of x to y if they are not already present in y
+
+print("The array without duplicates is: ",y) # this will print the array without duplicates
+
+'''
+Output:
+The array without duplicates is:  [10, 11, 20, 40, 50, 30, 66, 98, 90, 44, 34, 33, 22]
+
+'''
+
 
 '''
 List inside a List inside a List (3D array)
