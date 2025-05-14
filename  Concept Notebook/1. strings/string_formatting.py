@@ -74,27 +74,12 @@ print(f"Square of {x} is {square(x)}") # prints Square of 10 is 100
 
 # Longest string in Python
 
-x=["Tomato","Brinjal","Okhra","Cabbage","Bottle Gourd","Cauliflower","Snake Gourd","Moringa"]
-
-bigstring = " "
-
-for i in range(len(x)):
-    if len(bigstring) < len(x[i]):
-        bigstring = bigstring
-    else:
-        bigstring = x[i]
-        
-print(bigstring) # prints the longest string in the list
-
-
-# Using slicing to find the longest string in a list
-
 x = ["Tomato", "Brinjal", "Okhra", "Cabbage", "Bottle Gourd", "Cauliflower", "Snake Gourd", "Moringa"]
 
 longest = x[0]
-for item in x[1:]:
-    if len(item) > len(longest):
-        longest = item
+for i in x:
+    if len(i) > len(longest):
+        longest = i
 
 print(f"The longest vegetable name is: {longest}")
 
