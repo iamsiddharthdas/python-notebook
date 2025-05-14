@@ -235,22 +235,96 @@ The array without duplicates is:  [10, 20, 30, 80, 81, 60, 42, 2, 31, 1]
 
 # List comprehension
 
-y = [11,10,20,22,31,45,67,83,75]
-x = [y[i] for i in range(len(y)) if y[i]%2!=0]
-# x =[y[i] if y[i]%2==0 else True for i in range(len(y))] # this will add the y array to the x array if it is even
-# x =[y[i] if y[i]%2==0 else 'Odd Value' for i in range(len(y))] # this will add the y array to the x array if it is even and if it is odd then it will add 'Odd Value' to the x array
+'''
+
+Why do we use list comprehension?
+
+You can declare and filter elements in a list using loops (for, if, else) 
+and conditions in a single line using list comprehension.
+
+How to use list comprehension?
+
+If you are using for loop with only 'if' condition, you have to write on the right of the 'for' loop.
+But if you are using 'if' and 'else' condition, you have to write on the left of the 'for' loop.
+
+'''
+# Declaring elements in the array using list comprehension
+x = [i for i in range(10)]
 
 print(x)
 
-# Remove duplicates from a list using list comprehension 
+'''
+Output:
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+'''
+
+x = [i for i in range(10) if i % 2 == 0]
+
+print(x)
+
+'''
+Output:
+[0, 2, 4, 6, 8]
+
+'''
+
+# Filtering elements in the array using list comprehension
+y = [11,10,20,22,31,45,67,83,75]
+
+x = [y[i] for i in range(len(y)) if y[i] % 2 != 0]
+# this will add the y array to the x array if it is odd
+
+print(x)
+
+
+y = [11,10,20,22,31,45,67,83,75]
+
+x = [y[i] for i in range(len(y)) if y[i] % 2 != 0]
+# this will add the y array to the x array if it is odd
+
+print(x)
+
+'''
+Output:
+[11, 31, 45, 67, 83, 75]
+
+'''
+# Odd and Even numbers in the array using list comprehension
+
+y = [11,10,20,22,31,45,67,83,75]
+
+x =[y[i] if y[i]%2==0 else True for i in range(len(y))] 
+# prints True if the value is odd
+# prints the element if the value is even
+
+print(x)
+
+'''
+Output:
+[True, 10, 20, 22, True, True, True, True, True]
+
+'''
+
+y = [11,10,20,22,31,45,67,83,75]
+x =[y[i] if y[i]%2==0 else 'Odd Value' for i in range(len(y))] 
+# prints 'Odd Value' if the value is odd
+# prints the element if the value is even
+
+print(x)
+
+'''
+Removing duplicates from a list using list comprehension
+
+'''
 
 x = [10,10,11,20,40,50,30,11,40,66,98,90,44,34,33,22]
 y = []
+z = [y.append(i) for i in x if i not in y] 
+# this will add the elements of x to y if they are not already present in y
 
-z = [y.append(i) for i in x if i not in y] # this will add the elements of x to y if they are not already present in y
-
-print("The array without duplicates is: ",y) # this will print the array without duplicates
+print("The array without duplicates is: ",y) 
+# this will print the array without duplicates
 
 '''
 Output:

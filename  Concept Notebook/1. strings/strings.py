@@ -20,7 +20,43 @@ print(message.find('Universe')) #prints -1 as that string is not present in 'mes
 
 
 
+# Character by Character printing
 
+x = 'Lokesh is a good boy'
 
+for i in range(len(x)):
+    print(x[i]) # prints each character in the string
 
+'''
+Output:
+L
+o
+k
+e
+s
+h
+ 
+i
+s
+ 
+a
+ 
+g
+o
+o
+d
+ 
+b
+o
+y
+
+'''
+
+x="Lokesh is the Good Boy. Is he a Developer"
+
+count=0
+for i in range(len(x)):
+    if x[i]=="a" or x[i]=="e" or x[i]=="i" or x[i]=="o" or x[i]=="u" or x[i]=="A" or x[i]=="E" or x[i]=="I" or x[i]=="O" or x[i]=="U":
+        count=count+1
+print(count)
 
