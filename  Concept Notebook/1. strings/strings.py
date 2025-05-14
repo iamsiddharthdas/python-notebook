@@ -18,8 +18,6 @@ print(message.find('World')) #prints the index i.e 8
 print(message.find('Universe')) #prints -1 as that string is not present in 'message'
 
 
-
-
 # Character by Character printing
 
 x = 'Lokesh is a good boy'
