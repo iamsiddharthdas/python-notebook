@@ -51,6 +51,7 @@ o
 y
 
 '''
+# Finding no. of vowels in a string
 
 x="Lokesh is the Good Boy. Is he a Developer"
 
@@ -59,4 +60,7 @@ for i in range(len(x)):
     if x[i]=="a" or x[i]=="e" or x[i]=="i" or x[i]=="o" or x[i]=="u" or x[i]=="A" or x[i]=="E" or x[i]=="I" or x[i]=="O" or x[i]=="U":
         count=count+1
 print(count)
+
+
+
 
