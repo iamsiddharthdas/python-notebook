@@ -189,3 +189,117 @@ for i in range(len(x)):
 
 print(''.join(y))
 
+# Count characters
+
+def char_count(text):
+    result = ""
+    for char in text:
+        if char not in result:
+            count = text.count(char)
+            result = result + (f"{char}:{count}  ")
+    return result
+
+print(char_count("Lokesh is a good boy"))
+
+'''
+Output:
+L:1  o:4  k:1  e:1  s:2  h:1  i:1  a:1  g:1  d:1  b:1  y:1 
+
+'''
+
+'''Another method'''
+
+x = 'Lokesh is a good boy'
+y = []
+
+
+for i in range(len(x)):
+    if x[i] not in y:
+        y.append(x[i])
+
+print(y)
+
+newString = ''.join(y)
+
+print(newString)
+
+for i in range(len(newString)):
+    count = 0
+    targetString = x[i]
+    for j in range(len(x)):
+        if x[j] == targetString:
+            count = count+ 1
+
+    print(f"Count of {x[i]} is {count}")
+
+'''
+Output:
+
+Count of L is 1
+Count of o is 4
+Count of k is 1
+Count of e is 1
+Count of s is 2
+Count of h is 1
+Count of i is 1
+Count of a is 1
+Count of g is 1
+Count of d is 1
+Count of b is 1
+Count of y is 1
+
+'''
+
+# Capitalize first letter of each word
+
+def cap(text):
+    return text.title()
+
+print(cap("Lokesh is a good boy"))
+
+'''
+Output:
+Lokesh Is A Good Boy
+
+'''
+
+'''Another method'''
+
+x = "lokesh is a good boy"
+
+y = x.split()
+z =[]
+for i in range(len(y)):
+    z.append(y[i].capitalize)
+
+x = " ".join(z)
+
+print(x)
+
+# Most frequent character
+
+x = "Lokesh is the good boy"
+
+
+x = x.replace(" ", "")
+
+max_count = 0
+max_char = ''
+for char in x:
+    count = x.count(char)
+    if count > max_count:
+        max_count = count
+        max_char = char
+
+print("Most frequent character:", max_char)
+
+'''
+Homework - 8,9,13
+
+
+'''
+# Check if substring exists
+# Two strings are rotations of each other
+# If string is pangram
+# all substring of a string
+# First non-repeating character
