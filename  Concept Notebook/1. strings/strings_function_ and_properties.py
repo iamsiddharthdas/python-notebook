@@ -148,49 +148,8 @@ else:
     print("No it is not a pallindrome")
     
 
+
 # Anagram
-
-def is_anagram(x, y):
-    # Step 1: If lengths are different, they can't be anagrams
-    if len(x) != len(y):
-        return False
-
-    # This list keeps track of which characters in y have been matched
-    used = []
-
-    # Loop through each character in x
-    for i in range(0, len(x)):
-        found = False  # Flag to check if a matching character is found
-
-        # Try to match x[i] with some character in y
-        for j in range(0, len(y)):
-            already_used = False
-
-            # Check if this character in y was already used
-            for k in range(0, len(used)):
-                if used[k] == j:
-                    already_used = True
-                    break
-
-            # If not used and characters match
-            if not already_used and x[i] == y[j]:
-                used.append(j)  # Mark this character in y as used
-                found = True    # Mark that we found a match
-                break
-
-        # If no match was found for x[i], not an anagram
-        if not found:
-            return False
-
-    # All characters matched, it's an anagram
-    return True
-
-# Test cases
-print(is_anagram("listen", "silent"))  # True
-print(is_anagram("elbow", "below"))    # True
-print(is_anagram("hello", "world"))    # False
-
-'''Another example of anagram'''
 
 def anagram(str1,str2):
     str1="".join(sorted(str1))
@@ -200,7 +159,9 @@ def anagram(str1,str2):
     else:
         print("No it is anagram")
 
-anagram("Lokesh","Mukesh")
+anagram("Lokesh","Mukesh")  # Output: Yes it is anagram
+anagram("listen", "silent") # Output: Yes it is anagram
+anagram("elbow", "below")   # Output: No it is not anagram
 
 # Remove duplicate strings
 
