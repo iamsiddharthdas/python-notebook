@@ -122,7 +122,68 @@ Lokesh is a good boy, he is a full stack developer
 
 '''
 
+# Difference between sort() and sorted()
+
+'''
+sort()
+
+Used on: Lists only (in-place sorting).
+Modifies the original list.
+Returns: None (it modifies the list directly).
+
+Syntax:
+
+my_list.sort()
+
+sorted()
+
+Used on: Any iterable (lists, tuples, dictionaries, etc.).
+Does not modify the original iterable.
+Returns: A new sorted list.
+
+Syntax:
+
+sorted_list = sorted(my_iterable)
+
+'''
+
+# Using sort()
+a = [3, 1, 4]
+a.sort()
+print(a)  # [1, 3, 4]
+
+# Using sorted()
+b = [3, 1, 4]
+c = sorted(b)
+print(b)  # [3, 1, 4] (original remains unchanged)
+print(c)  # [1, 3, 4]
+
+'''For sorting strings'''
+
+b = 'str1'
+c = ''.join(sorted(b))
+
+print(c)
+
 # Reverse a string
+
+x = "Lokesh is a good boy, he is a full stack developer"
+
+y = []
+
+
+for i in range(len(x)):
+    y.append(x[i])
+
+y.reverse()
+
+x = "".join(y) 
+
+print(x)
+
+
+'''Without using append() and reverse()'''
+
 
 text = "Lokesh is a good boy, he is a full stack developer"
 reverse = ""
@@ -131,6 +192,13 @@ for i in text:
     reverse = i + reverse
 
 print(reverse)
+
+'''
+Output:
+
+repoleved kcats lluf a si eh ,yob doog a si hsekoL
+
+'''
 
 # Palindrome
 
