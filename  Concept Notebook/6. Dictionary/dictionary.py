@@ -1,5 +1,6 @@
 '''
-Dictionary -> {"key":"value"}
+Dictionary -> {"key":"value"} -> mutable
+
 Key -> Unique, Immutable
 Value -> Mutable
 
@@ -9,15 +10,54 @@ x ={
     "c" : 300,
 }
 
+# a,b,c - key
+# 100,200,300 - value
+
 print(x["a"]) # prints 100 i.e value of key "a"
 print(x["b"]) # prints 200 i.e value of key "b"
 print(x["c"]) # prints 300 i.e value of key "c"
 
 print(x) # prints {"a" = 100, "b" = 200, "c" = 300}
 
-a,b,c - key
-100,200,300 - value
+x.keys() # prints dict_keys(['a', 'b', 'c'])
+x.values() # prints dict_values([100, 200, 300])
+print(keys) # prints dict_keys(['a', 'b', 'c'])
+print(values) # prints dict_values([100, 200, 300])
 
+y ={
+    1:100,
+    2:200,
+    3:300
+}
+
+print(y) # prints {1: 100, 2: 200, 3: 300}
+
+z ={
+    10.2:1
+    22.4:2
+    33.6:3
+}
+
+print(z) # prints {10.2: 1, 22.4: 2, 33.6: 3}
+
+# key (allowed data types) -> str, int, float, bool
+
+x.clear() # clears the dictionary
+
+
+ko = {
+    'a' : 100,
+    'ab' : 200,
+    'abc' : 300 # doesnt matter if the value is number or string, it will be overwritten
+    'abc' : 400
+    
+}
+
+print(ko) # prints {'a': 100, 'ab': 200, 'abc': 400} as 'abc' key is overwritten
+
+# Append function for dictioanry
+ko["abcd"] = True # adds key "abcd" with value True
+ko["xyz"] = 88.99 # adds key "xyz" with value 88.99
 
 '''
 
