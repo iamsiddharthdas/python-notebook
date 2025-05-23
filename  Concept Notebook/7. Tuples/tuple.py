@@ -65,3 +65,19 @@ x = tuple(x) # converts the list to a tuple
 print(tuple) # prints (10, 20, 30, 40, 50, 100)
 
 
+# 2d array with tuples
+
+x = [(10,20,30),(40,50,60),(70,80,90)]
+
+for i,j,k in x:
+    print(i,j,k)
+    
+'''
+Output:
+
+(10, 20, 30)
+(40, 50, 60)
+(70, 80, 90)
+
+
+'''

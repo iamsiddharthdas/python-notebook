@@ -47,3 +47,18 @@ print(x.symmetric_difference(y)) # prints {10, 20, 40, 50} # It will put all the
 # print(x ^ y) -> Symmetric Difference
 
 
+# set is only iterable in for-in loop
+for i in x:
+    print(i) # prints 10,20,30
+
+# clear
+
+x = {10,20,30}
+x.clear()
+print(x) # prints set()
+
+# copy
+
+x = {10,20,30}
+y = x.copy()
+print(y) # prints {10, 20, 30}

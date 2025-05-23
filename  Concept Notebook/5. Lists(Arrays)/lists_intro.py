@@ -184,3 +184,18 @@ When a function is called, a new stack frame is created for that function call. 
 Recursion uses stack memory to keep track of function calls and local variables. Each time a function calls itself, a new stack frame is created. When the base case is reached, the stack frames are removed one by one until the original function call returns.
 
 '''
+
+# 2D Lists
+
+x = [[10,20,30],[30,40,50],[50,60,70]]
+
+for i,j,k in x:
+    print(i,j,k)
+    
+'''
+Output:
+10 20 30
+30 40 50
+50 60 70
+
+'''
