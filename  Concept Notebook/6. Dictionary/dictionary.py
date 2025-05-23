@@ -267,7 +267,7 @@ Output:
 
 # Without dict
 
-''
+
 x = ["apple", "mango", "kiwi", "banana", "orange"]
 y = [10, 20, 30, 40, 50]
 
@@ -593,3 +593,4 @@ Output:
 
 
 '''
+
