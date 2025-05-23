@@ -1,4 +1,4 @@
-This repo is just my personal learning log of code snippets that helped me understand Python in depth, 
+This repo is just my personal learning log of code snippets to understand Python in depth, 
 from the basics to more advanced topics. 
 
 
