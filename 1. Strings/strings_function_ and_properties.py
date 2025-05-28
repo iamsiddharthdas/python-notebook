@@ -361,13 +361,128 @@ for char in x:
 
 print("Most frequent character:", max_char)
 
-'''
-Homework - 8,9,13
-
+# Print all substrings
 
 '''
+Substrings -> A substring is a contiguous sequence of characters within a string.
+'''
+
+
+x='Lokesh'
+for i in range(len(x)):
+    for j in range(i+1,len(x)+1): 
+        print(x[i:j]) 
+        
+'''
+
+Output:
+L
+Lo
+Lok
+Loke
+Lokes
+Lokesh
+o
+ok
+oke
+okes
+okesh
+k
+ke
+kes
+kesh
+e
+es
+esh
+s
+sh
+h
+
+'''
+
 # Check if substring exists
+
+x = 'Lokesh'
+y = input("Enter the substring: ")
+
+if y in x:
+    print("Substring exists")
+else:
+    print("Substring does not exist")
+
+'''
+Output:
+
+Enter the substring: Lk
+Substring does not exist
+
+'''
+
 # Two strings are rotations of each other
+
+'''
+
+"abcde" and "deabc" → Yes (rotation)
+"abc" and "cab"     → Yes (rotation)
+"abc" and "acb"     → No (not a rotation)
+
+To check whether two strings are rotations of each other, you can use this simple trick:
+
+If x is a rotation of y, then y will always be a substring of x + x.
+
+'''
+
+x = "Lokesh"
+
+y = input("Enter the string: ")
+
+if y in x+x:
+    print("Strings are rotations of each other")
+else:
+    print("Strings are not rotations of each other")
+
+
 # If string is pangram
-# all substring of a string
+
+'''
+Pangram -> A pangram is a sentence or phrase that contains every letter of the alphabet at least once.
+
+'''
+def pangram(x):
+    x = x.lower()
+    for i in 'abcdefghijklmnopqrstuvwxyz':
+        if i not in x:
+            return False
+    return True
+
+txt = input("Enter a string: ")
+if pangram(txt):
+    print("The string is a pangram.")
+else:
+    print("The string is NOT a pangram.")
+    
+    
 # First non-repeating character
+
+def first_non_repeating(string):
+    for i in len(string):
+        if string.count(string[i]) == 1:
+            return string[i]
+    return None
+
+# Example usage
+text = input("Enter a string: ")
+result = first_non_repeating(text)
+
+if result:
+    print("First non-repeating character:", result)
+else:
+    print("No non-repeating character found.")
+    
+'''
+Output:
+
+	•	Input: "swiss" → Output: First non-repeating character: 'w'
+	•	Input: "aabbcc" → Output: No non-repeating character found.
+
+'''
