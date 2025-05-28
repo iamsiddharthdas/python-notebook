@@ -1,5 +1,5 @@
 '''
-POP - Procedural Object Oriented Programming
+POP - Procedure Oriented Programming
 |
 function
 
@@ -42,17 +42,26 @@ class Car: #class
     color = None
     price = None
     
-    def fun(self,a,b,c): # method with a,b,c as parameters
-        print("Hi This Fun Method")
-        
-thar = Car() # object
+    def car_specs(self, engine, color, price):  # method to set car specs
+        self.engine = engine
+        self.color = color
+        self.price = price
+        print(f"Specs set : Engine={self.engine}, Color={self.color}, Price={self.price}")
+
+
+# Creating car objects
+thar = Car()
 creta = Car()
 
+# Calling the method to set specifications
+thar.car_specs("mHawk", "Red", 1200000)  # Engine, Color, Price
+creta.car_specs("TurboGDI", "White", 2000000)
 
-thar.fun(100,200,300) # method call
-# thar.fun() is used for method call
-# have to pass same number of parameters as defined in the method
+# Output:
+# Specs set: Engine=mHawk, Color=Red, Price=1200000
+# Specs set: Engine=TurboGDI, Color=White, Price=2000000
 
+'''Another way to set car specs'''
 
 thar.engine = "mHawk"
 thar.tyres = "MRF"
