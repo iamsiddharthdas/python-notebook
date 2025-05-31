@@ -186,25 +186,160 @@ print(obj.x)
 class A:
     x=100
     y=200
-    
+
     def __init__(self):
         print("Hello i am A class constructor")
-        
-        
+
 class B:
-    x=1000
-    y=2000
-    
+    x1=150
+    y1=250
+
     def __init__(self):
         print("Hello i am B class constructor")
 
+class C():
+    x2=1500
+    y2=2500
 
-class C(A,B):
-    x2 = 1500
-    y2 = 2500
     def __init__(self):
-        super().__init__() # super() is used to call the constructor of parent class of first priority i.e. A
+        super().__init__()
         print("Hello i am C class constructor")
-        
-obj=C()
 
+class D(C,A,B):
+    x3=1000
+    y3=2000
+
+    def __init__(self):
+        super().__init__()
+        print("Hello I am D class constructor")
+
+obj=D()
+
+print(obj.x)
+print(obj.x1)
+print(obj.x2)
+print(obj.x3)
+
+# Hierarchichal inheritance. 
+
+class A:
+    x=100
+    y=200
+
+    def __init__(self):
+        print("Hello i am A class constructor")
+
+class B(A):
+    x1=150
+    y1=250
+
+    def __init__(self):
+        print("Hello i am B class constructor")
+
+class C(A):
+    x2=1500
+    y2=2500
+
+    def __init__(self):
+        super().__init__()
+        print("Hello i am C class constructor")
+
+class D(A):
+    x3=1000
+    y3=2000
+
+    def __init__(self):
+        super().__init__()
+        print("Hello I am D class constructor")
+
+
+obj=B()
+obj1=C()
+obj2=D()
+
+print(obj.x)
+print(obj.x1)
+print(obj1.x2)
+print(obj2.x3)
+
+
+# Hybrid Inheritance.
+
+class A:
+    x=100
+    y=200
+
+    def __init__(self):
+        print("Hello i am A class constructor")
+
+class B(A):
+    x1=150
+    y1=250
+
+    def __init__(self):
+        print("Hello i am B class constructor")
+
+class C(A):
+    x2=1500
+    y2=2500
+
+    def __init__(self):
+        super().__init__()
+        print("Hello i am C class constructor")
+
+class D(C,B):
+    x3=1000
+    y3=2000
+
+    def __init__(self):
+        super().__init__()
+        print("Hello I am D class constructor")
+
+class E(C,D):
+    x4=1600
+    y4=2600
+    
+    def __init__(self):
+        super().__init__()
+        print("Hello I am class E constructor")
+
+
+obj=E()
+
+print(obj.x)
+print(obj.x1)
+print(obj.x2)
+print(obj.x3)
+print(obj.x4)
+
+
+# 2nd example of hybrid inheritance:
+
+# Base class
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+# Subclasses using hierarchical inheritance
+class Mammal(Animal):
+    def give_birth(self):
+        return f"{self.name} is giving birth to live young."
+
+class Bird(Animal):
+    def lay_eggs(self):
+        return f"{self.name} is laying eggs."
+
+# Derived class using multiple inheritance
+class Platypus(Mammal, Bird):
+    def speak(self):
+        return f"{self.name} says Quack!"
+
+# Example usage
+platypus_obj = Platypus("Perry")
+
+print(platypus_obj.speak())        # Output: Perry says Quack!
+print(platypus_obj.give_birth())   # Output: Perry is giving birth to live young.
+print(platypus_obj.lay_eggs())     # Output: Perry is laying eggs.
