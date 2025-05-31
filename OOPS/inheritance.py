@@ -180,3 +180,31 @@ obj=Cub()
 print(obj.c)
 print(obj.a)
 print(obj.x)
+
+# Multiple Inheritance
+
+class A:
+    x=100
+    y=200
+    
+    def __init__(self):
+        print("Hello i am A class constructor")
+        
+        
+class B:
+    x=1000
+    y=2000
+    
+    def __init__(self):
+        print("Hello i am B class constructor")
+
+
+class C(A,B):
+    x2 = 1500
+    y2 = 2500
+    def __init__(self):
+        super().__init__() # super() is used to call the constructor of parent class of first priority i.e. A
+        print("Hello i am C class constructor")
+        
+obj=C()
+
