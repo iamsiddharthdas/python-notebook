@@ -37,46 +37,52 @@ obj=cub()
 
 print(obj.x)
 obj.fun() # calling the method of Lion class
-
 obj.fun2() # calling the method of cub class
 
 
 
 # Example of single inheritance and super class
 class Lion:
-    x=100
-    y=200
-    
+    x = 100
+    y = 200
+
     def __init__(self):
-        print("hello i am Lion Class Constructor")
-    
+        print("Hello, I am the Lion class constructor.")
+
     def fun(self):
-        print("Hello i am Lion class method")
-        
-        
-class cub(Lion):
-    a=1000
-    b=2000
+        print("Hello, I am a method from the Lion class.")
+
+class Cub(Lion):
+    a = 1000
+    b = 2000
+
     def __init__(self):
-        
-        print("hello i am cub Class Constructor")
-    
+        super().__init__()  # Call the parent class constructor
+        print("Hello, I am the Cub class constructor.")
+
     def fun2(self):
-        print(super().x) # super() is used to access the parent class but not modify it.
-        print("Hello i am cub class method")
-        
-        
-obj=cub() # obj calls the constructor of cub class
-obj.x=1500
+        print(super().x)  # Accessing class variable from parent
+        super().fun()     # Calling parent method using super()
+        print("Hello, I am a method from the Cub class.")
+
+
+# Creating an object of Cub
+obj = Cub()    # This will call both the Lion and Cub constructors
+obj.fun2()     # This will demonstrate usage of super() in a method
 
 '''
 Output:
 
-hello i am cub Class Constructor
+Hello, I am the Lion class constructor.     -> super().__init__()
+Hello, I am the Cub class constructor.      -> __init__(self) of Cub
+100                                         -> super().x
+Hello, I am a method from the Lion class.   -> super().fun()
+Hello, I am a method from the Cub class.    -> fun2(self)
+
 
 '''
 
-# Overriding 
+# Overriding
 
 class Lion:
     x=100
