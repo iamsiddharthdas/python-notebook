@@ -150,24 +150,6 @@ Welcome karan to ABC
 
 '''
 
-'''
-Static Method:
-Methods that dont use the self parameter (work at class level)
-
-Decorators: Allow us to wrap another function 
-in order to extend the behaviour of the wrapped function without permanently modifying it.
-
-'''
-
-# Example:
-
-class Student:
-    @staticmethod # decorator
-    def college():
-        print('ABC College')
-        
-Student.college()
-
 # Get average mark of the students
 
 class Student:

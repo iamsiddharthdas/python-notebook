@@ -16,6 +16,7 @@ Types of Inheritance:
 4. Hierarchical Inheritance - The child class inherits from multiple parent classes, but each parent class has only one child class
 
 '''
+# Single inheritance
 
 class Lion:
     x=100
@@ -39,9 +40,36 @@ print(obj.x)
 obj.fun() # calling the method of Lion class
 obj.fun2() # calling the method of cub class
 
+'''
+super() is used to call the constructor of parent class
+It is commonly used in multiple inheritance
+
+'''
+# Super class example
+
+class Car:
+    def __init__(self,type):
+        self.type = type
+    
+    @staticmethod # decorator
+    def start():
+        return "Car started"
+    
+    @staticmethod # decorator
+    def stop():
+        return "Car stopped"
+    
+class ToyotaCar(Car):
+    def __init__(self,name,type):
+        super().__init__(type) # super class to call type in Car
+        self.name = name
+        
+car1 = ToyotaCar('Fortuner','electric')
+print(car1.type)
 
 
-# Example of single inheritance and super class
+# Another example of single inheritance and super class
+
 class Lion:
     x = 100
     y = 200
@@ -153,6 +181,7 @@ Hi i am cub constructor
 100
 
 '''
+
 # How to Print constructor for every class
 
 class Animal:
