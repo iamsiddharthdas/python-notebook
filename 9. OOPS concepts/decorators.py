@@ -41,34 +41,23 @@ def real_function(*args):
     
 real_function(10,20,30,40,50,60,70,80)
 
-
-Types of Decorators:
-1. Class Decorator -> decorates a class e.g. @classmethod
-2. Method Decorator -> decorates a method e.g. @staticmethod
-
-Static Method:
-Methods that dont use the self parameter (work at class level)
-
-Why static methods are used?
-They can be called without creating an object of the class
-
-
 '''
+
 
 # static method
 
-class Student:
-    @staticmethod # decorator
-    def college():
-        print('ABC College')
-        
-Student.college()
+'''
+
+Static Method:
+
+For every new instance or object, this method wont be created repeatedly.
+It will be created only once and it can be used by all the objects of the class.
+Static method doesnt modify or access instance attributes. So its generally used for utility.
+e.g. class car -> start(), stop()
+
 
 '''
-Output:
-ABC College
 
-'''
 # static method in single inheritance
 
 class Car:
@@ -126,6 +115,11 @@ Car started
 
 # Data abstraction
 
+'''
+@abstractmethod - its a decorator that isused to declare an abstract method in an abstract class
+
+'''
+
 from abc import ABC, abstractmethod
 
 class A(ABC):
@@ -149,3 +143,15 @@ class B(A):
 obj = B()
 obj.dog()
 obj.cat()
+
+# @classmethod
+
+'''
+
+@staticmethod can't access or modify class attributes.
+So, @classmethod is used to access or modify class attributes.
+
+A class method is bound to class and receives the class(cls) as an implicit first argument.
+
+
+'''

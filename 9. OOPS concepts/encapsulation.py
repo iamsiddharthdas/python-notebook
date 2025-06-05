@@ -18,7 +18,7 @@ p1 = Person()
 print(p1.__name) # throws an error because __name is private variable
 print(p1.__hello()) # throws an error because __hello is private method
 
-# How to fix the error?
+# Can internal functions of the class access the private method?
 
 class Person:
     __name = 'anonymous'
@@ -37,6 +37,8 @@ Output:
 Hello person
 None
 
+Yes, the internal functions of the class can access the private method.
+This is basically done to prevent exposing the instance attributes outside of the class.
 
 '''
 # How to keep the account password private in Account class? (example)

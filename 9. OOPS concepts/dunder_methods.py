@@ -41,22 +41,39 @@ class ABC:
 obj = ABC()
 print(len(obj)) # will return the length of x and y
 
-# add 
+# Other dunder methods
+
 class ABC:
-    x= 100
-    y= 200
+    x = 100
+    y = 200
     
     def __init__(self):
-        print("Hello i am ABC contructor")
+        print("Hello i am ABC constructor")
     
-    def __add__(self,other):
+    def __add__(self,other): # dunder method for addition
         print(self.x+other.x)
+    
+    def __eq__(self,other): # dunder method for equality
+        print(self.x == other.x)
+    
+    def __ne__(self,other): # dunder method for not equal to
+        print(self.x != other.x)
+    
+    def __gt__(self,other): # dunder method for greater than
+        print(self.x > other.x)
+    
+    def __ge__(self,other): # dunder method for greater than or equal to
+        print(self.x >= other.x)
+    
+    def __lt__(self,other): # dunder method for less than
+        print(self.x < other.x)
+    
+    def __le__(self,other): # dunder method for less than or equal to
+        print(self.x <= other.x)
         
-obj=ABC()
-
+obj = ABC()
 obj2 = ABC()
-obj.x = 1500
-obj2.x = 3000
 
-print(obj+obj2)
+obj2.x = 900
 
+obj <= obj2
