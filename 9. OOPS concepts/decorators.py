@@ -155,3 +155,27 @@ A class method is bound to class and receives the class(cls) as an implicit firs
 
 
 '''
+
+class Person:
+    name = 'anonymous'
+    
+    # def changeName(self,name):
+    #     Person.name = name 
+    #     # self.__class__.name = name (works the same as Person.name)
+    
+    @classmethod # decorator
+    def changeName(cls,name): 
+        cls.name = name 
+        # Now changes will happen on the class level, not on the object level.
+
+p1 = Person()
+p1.changeName('Sid')
+print(p1.name) # prints Sid
+print(Person.name) # prints Sid
+
+'''
+instance method (self) - can access or modify instance attributes.
+class method (cls) - can access or modify class attributes.
+static method - cannot access or modify either instance or class attributes.
+
+'''
