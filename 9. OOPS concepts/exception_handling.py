@@ -20,3 +20,44 @@ Output:
 ZeroDivisionError: division by zero
 It will print anyway
 '''
+
+##
+
+try:
+    
+    import xyz
+    
+except ZeroDivisionError as e:
+    print("ZeroDivisionError")
+    
+except IndexError as e:
+    print("IndexError")
+    
+except Exception as e:
+    print(e)
+
+
+##
+
+try:
+    
+    raise Exception("Hello")
+
+except Exception as e:
+    print(e)   
+
+##
+
+try:
+    
+    x={
+        'a':100,
+        'b':200,
+        'c':300,
+    }
+    
+    print(x['d'])
+
+except Exception as e:
+    print("Exception:",e)
+    

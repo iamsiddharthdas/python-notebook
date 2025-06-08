@@ -119,6 +119,7 @@ num = int(input("Enter a number: "))
 
 
 # result = PrimeChecker.check_prime(num)
+
 '''
 Why cant we do this?
 

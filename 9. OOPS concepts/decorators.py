@@ -113,36 +113,6 @@ Car started
 
 '''
 
-# Data abstraction
-
-'''
-@abstractmethod - its a decorator that isused to declare an abstract method in an abstract class
-
-'''
-
-from abc import ABC, abstractmethod
-
-class A(ABC):
-
-    @abstractmethod
-    def dog(self):
-        pass
-
-    @abstractmethod
-    def cat(self):
-        pass
-
-class B(A):
-
-    def dog(self):
-        print("Hello, I am dog")
-
-    def cat(self):
-        print("Hello, I am cat")
-
-obj = B()
-obj.dog()
-obj.cat()
 
 # @classmethod
 
