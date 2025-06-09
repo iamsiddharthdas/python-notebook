@@ -9,4 +9,7 @@ for i in range(1,11):
     myfile.write(f"This is the content of {filename}\n")
     myfile.close()
 
+'''using lambda and map'''
 
+# folder = "/Users/siddharth/Documents/GitHub/python-notebook/10. File Handling/experiment/"
+# list(map(lambda i: open(f"{folder}{i}.txt", "w").close(), range(1, 11)))
