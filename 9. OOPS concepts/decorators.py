@@ -44,7 +44,7 @@ real_function(10,20,30,40,50,60,70,80)
 '''
 
 
-# static method
+# @staticmethod
 
 '''
 
@@ -149,3 +149,59 @@ class method (cls) - can access or modify class attributes.
 static method - cannot access or modify either instance or class attributes.
 
 '''
+
+# @property
+
+'''
+We use @property decorator on any method in the class to use the method as a property.
+
+'''
+
+class Student:
+    def __init__(self,phy,chem,math):
+        self.phy = phy
+        self.chem = chem
+        self.maths = math
+        self.percentage = str((self.phy + self.chem + self.maths) / 3) + '%'
+        
+std1 = Student(98,97,99)
+print(std1.percentage) # prints 98%
+
+'''
+When rechecked, teacher found that the physics marks was incorrect for student 1.
+
+'''
+std1.phy = 86 # changed the physics marks
+print(std1.phy) # prints 86 
+print(std1.percentage) # still prints 98% which is incorrect
+
+'''
+This happens because self.percentage takes the initial set value of 
+self.phy, self.chem and self.maths for percentage calculations. Not the updated values.
+
+To avoid this, we use @property decorator.
+
+'''
+
+class Student:
+    def __init__(self,phy,chem,math):
+        self.phy = phy
+        self.chem = chem
+        self.maths = math
+        self.percentage = str((self.phy + self.chem + self.maths) / 3) + '%'
+        
+    # def calcPercentage(self):
+    #     self.percentage = str((self.phy + self.chem + self.maths) / 3) + '%' (works same as @property decorator)
+    
+    @property # decorator 
+    def percentage(self):
+        return str((self.phy + self.chem + self.maths) / 3) + '%'
+    
+
+std1 = Student(98,97,99)
+print(std1.percentage) # prints 98%
+
+std1.phy = 86 # changed the physics marks
+print(std1.phy) # prints 86 
+print(std1.percentage) # prints updated percentage i.e. 94%
+

@@ -45,28 +45,38 @@ super() is used to call the constructor of parent class
 It is commonly used in multiple inheritance
 
 '''
-# Super class example
 
-class Car:
-    def __init__(self,type):
-        self.type = type
-    
-    @staticmethod # decorator
-    def start():
-        return "Car started"
-    
-    @staticmethod # decorator
-    def stop():
-        return "Car stopped"
-    
-class ToyotaCar(Car):
-    def __init__(self,name,type):
-        super().__init__(type) # super class to call type in Car
-        self.name = name
+# Employee and Engineer class - Super() with single inheritance
+
+class Employee:
+    def __init__(self, role, dept, salary):
+        self.role = role
+        self.dept = dept
+        self.salary = salary
         
-car1 = ToyotaCar('Fortuner','electric')
-print(car1.type)
+    def showDetails(self):
+        print("role = ", self.role)
+        print("dept = ", self.dept)
+        print("salary = ", self.salary)
 
+class Engineer(Employee):
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+        super().__init__('ENGINEER', 'IT', '75,000') # super() is used to call the constructor of parent class
+
+eng1 = Engineer('Elon',40)
+eng1.showDetails()
+
+'''
+Output:
+
+role =  ENGINEER
+dept =  IT
+salary =  75,000
+
+
+'''
 
 # Another example of single inheritance and super class
 

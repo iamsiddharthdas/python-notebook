@@ -45,7 +45,7 @@ class TicTacToeFIFO:
         return False  # Continue the game
 
     def check_win(self, player):
-        # Alias for cleaner code
+        
         b = self.board
 
         # Check all rows and columns for a winning line
@@ -65,7 +65,7 @@ class TicTacToeFIFO:
         return False
 
 
-# Instantiate the game
+# Start the game
 game = TicTacToeFIFO()
 game.display_board()  # Show the empty board
 
@@ -80,7 +80,7 @@ while True:
         if game.make_move(row, col):
             break  # End the game loop
     except (ValueError, IndexError):
-        # Handle invalid inputs (non-integers or out-of-bounds)
+        # Handle invalid inputs
         print("Invalid input. Please enter numbers between 0 and 2.")
         
 '''

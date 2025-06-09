@@ -21,21 +21,6 @@ ZeroDivisionError: division by zero
 It will print anyway
 '''
 
-##
-
-try:
-    
-    import xyz
-    
-except ZeroDivisionError as e:
-    print("ZeroDivisionError")
-    
-except IndexError as e:
-    print("IndexError")
-    
-except Exception as e:
-    print(e)
-
 
 ##
 
