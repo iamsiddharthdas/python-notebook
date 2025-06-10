@@ -10,7 +10,9 @@ Create/ Delete/ Read/ Write/ Append/ Copy/ Move - Operations in File Handling
 '''
 
 '''
-abc.txt 
+File: abc.txt 
+
+Content of abc.txt:
 
 Hello, How are you?
 Kal mein ghumne gaya tha

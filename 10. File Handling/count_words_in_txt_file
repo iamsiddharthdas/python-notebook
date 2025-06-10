@@ -1,0 +1,8 @@
+myfile= open("abc.txt","r")
+content = myfile.read()
+words = content.split()
+word_count = len(words)
+myfile.close()
+
+# Count the number of words in the file
+print(word_count)
