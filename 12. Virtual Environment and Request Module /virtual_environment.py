@@ -30,6 +30,10 @@ deactivate
 To find what modules are installed in the virtual environment folder:
 pip list
 
+
+To delete the virtual environment folder:
+sudo rm -rf folder_name
+
 '''
 
 
